@@ -25,9 +25,10 @@ $res=mysqli_query($conn,$req) or  die(mysqli_error());
                 
                 <p class="black"> NOM PROPRIETAIRE: <?php echo ($aff['nom_pro']) ?></p>
                 <p class="black">POSTNOM PROPRIETAIRE: <?php echo ($aff['postnom_pro']) ?></p>
-                <p class="black">PRENOM PROPRIETAIRE: <?php echo ($aff['prenom_pro']) ?></p>
+                 <p class="black">PRENOM PROPRIETAIRE: <?php echo ($aff['prenom_pro']) ?></p>
                
-       <a href="apercu_proprietaire.php?id_pro=<?php echo ($aff['id_pro'])?>"><button ><p><strong> Voir </strong></p></button></a>  
+
+                <a href="affectation_pro.php?id_pro=<?php echo ($aff['id_pro'])?>"><button ><p><strong> Voir </strong></p></button></a>        
 
 
 <?php }?>
