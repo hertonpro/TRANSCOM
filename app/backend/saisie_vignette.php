@@ -93,9 +93,9 @@ $res2=mysqli_query($conn,$req2) or die(mysqli_error());
 
       <?php while ($aff=mysqli_fetch_assoc($res)){?>
 
-    Numero matricule: <?php echo ($aff['reff_vignette'])?><br>
-    Numero matricule: <?php echo ($aff['date_livraison_vignette'])?><br>
-    Numero matricule: <?php echo ($aff['date_expiration_vignette'])?><br>
+    Refference : <?php echo ($aff['reff_vignette'])?><br>
+    Date livraison: <?php echo ($aff['date_livraison_vignette'])?><br>
+    Date d'expiration: <?php echo ($aff['date_expiration_vignette'])?><br>
 
    <hr class="two">
       <?php }?>

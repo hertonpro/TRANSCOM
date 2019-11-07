@@ -20,7 +20,10 @@ $res=mysqli_query($conn,$req) or die(mysqli_error());
 
 
     <a href="saisie_transport_terrestre.php">saisie trans terrestre</a><br>
-    <a href="liste_moyen_transport.php">liste MT</a><br>
+    <a href="liste_proprietaire.php">Liste Proprietaire</a><br>
+    <a href="liste_conducteur.php">Liste Conducteurs</a><br>
+    <a href="liste_moyen_transport.php">Liste Moyen de Transport</a><br>
+
      <a href="statistique.php">Staistique</a><br>
 
 

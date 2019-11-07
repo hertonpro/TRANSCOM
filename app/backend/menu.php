@@ -5,6 +5,6 @@
       <a href="saisie_taxe_voirie.php"><button class="btn-sm btn-primary">Taxe voirie</button></a>
       <a href="saisie_permis.php"><button class="btn-sm btn-primary">Permis</button></a>
       <a href="saisie_conducteur.php"><button class="btn-sm btn-primary">Conducteur</button></a>
-       <a href="saisie_controle_technique.php"><button class="btn-sm btn-primary">Controle technine</button></a>
+       <a href="saisie_controle_technique.php"><button class="btn-sm btn-primary">Controle technique</button></a>
         <a href="alerte.php"><button class="btn-sm btn-primary">Alerte</button></a>
      

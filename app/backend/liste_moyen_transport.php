@@ -24,10 +24,17 @@ include('connexion.php');
 //$_SESSION['id_div'] =$id_div;
 //echo $_SESSION['id_div'];
 
-$req=("SELECT * FROM moyen_de_transport ");
+$req=("SELECT * FROM moyen_de_transport ORDER BY date_enreg_mt DESC");
 $res=mysqli_query($conn,$req) or die(mysqli_error());
 ?>
-                    
+                     LISTE DES VEHICULES <br><br>
+
+ <form  method="GET" action="chercher_mt.php">
+         <input id="search-input" name="motcle" value="" placeholder="numero plaque/chassis/moteur"  type="text" >
+         
+         <button type="submit"  name="submit">Go</button>
+         </span> 
+    </form>
                                   <table border="1px">
                                     <thead>
                                         <tr>

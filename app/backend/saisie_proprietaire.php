@@ -54,6 +54,14 @@ mysqli_query($conn,$req1)  or die(mysqli_error()) ;
 <body>
  <a href="deconnexion.php">Deconnexion</a><br>
 
+<form  method="GET" action="chercher_proprietaire.php">
+         <input id="search-input" name="recherche_nom_pro" value="" placeholder="chercher Proprietaire"  type="text" >
+         
+         <button type="submit"  name="submit">Go</button>
+         </span> 
+    </form>
+
+
 <form method="POST" action="" enctype="multipart/form-data" accept-charset="utf-8">
 	NOM : <input type="text" name="nom_pro"><br>
 	POSTNOM : <input type="text" name="postnom_pro"><br>
@@ -122,7 +130,7 @@ $res2=mysqli_query($conn,$req2) or die(mysqli_error());
     Prenom: <?php echo ($aff['prenom_pro'])?><br>
 
 <br>
-<a href="affectation_pro.php?id_pro=<?php echo ($aff['id_pro'])?>"><button > Voir </button></a>   
+<a href="affectation_pro.php?id_pro=<?php echo ($aff['id_pro'])?>"><button > Aller affecter </button></a>   
       <?php }?>
 
 </body>

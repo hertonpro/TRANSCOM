@@ -8,12 +8,6 @@ include('connexion.php');
 include('menu.php');
 
 ?>
-<form  method="GET" action="chercher_proprietaire.php">
-         <input id="search-input" name="recherch_nom_pro" value="" placeholder="chercher Proprietaire"  type="text" >
-         
-         <button type="submit"  name="submit">Go</button>
-         </span> 
-    </form>
 
 
 <h5 class="">IDENTITE MOYEN DE TRANSPORT</h5>
@@ -64,17 +58,19 @@ $res=mysqli_query($conn,$req) or die(mysqli_error());
 
       <hr class="two">
       <?php
-      $req=("SELECT * FROM proprietaire WHERE id_mt_fk='".$_SESSION['id_mt']."' ");
-      $res=mysqli_query($conn,$req) or die(mysqli_error());
+       $req=("SELECT * FROM affectation_pro, proprietaire ,moyen_de_transport WHERE proprietaire.id_pro = affectation_pro.id_pro_affect AND moyen_de_transport.id_mt = affectation_pro.id_mt_affect AND  id_mt_affect='".$_SESSION['id_mt']."' ");
+        $res=mysqli_query($conn,$req) or die(mysqli_error());
       ?>
 
       <?php while ($aff=mysqli_fetch_assoc($res)){?>
-       non proprietaire: <?php echo ($aff['nom_pro'])?>
+       Non proprietaire: <?php echo ($aff['nom_pro'])?><br>
+       Postnom proprietaire: <?php echo ($aff['postnom_pro'])?><br>
+       Prenom: <?php echo ($aff['prenom_pro'])?><br>
 
       <hr class="two">
       <?php }?>
       
-
+<h2 class="mb-4">APERCU GENERAL NOM CHAUFFEUR</h2>
 
 
 <?php

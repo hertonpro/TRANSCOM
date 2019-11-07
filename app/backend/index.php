@@ -6,7 +6,7 @@ $id;
 //declaration pour la session
 
 if(isset($_POST['submit'])){
-$nom_ut=htmlspecialchars($_POST['nom_ut']) ;
+$nom_ut=htmlspecialchars($_POST['nom_ut']);
 $mdp_ut=htmlspecialchars($_POST['mdp_ut']);
 
 $req="SELECT * FROM utilisateur WHERE nom_ut='".$nom_ut."' AND mdp_ut='".$mdp_ut."' AND act_desact=1 AND role='roullage' limit 1";
@@ -53,7 +53,8 @@ $_SESSION['nom_ut'] =htmlentities ($_POST['nom_ut']);
                  
                     <input type="submit" value="Connexion" name="submit" class="btn btn-primary px-5 py-2">
                
-                  
+    <br>          
+<a href="saisie_utilisateur.php">creation compte</a>               
 
  <?php
  //include('footer.php');

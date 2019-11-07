@@ -21,13 +21,14 @@ $id_ut_affect=$_POST['id_ut_affect'];
 $nom_ut_affect=$_POST['nom_ut_affect'];
 $id_mt_affect=$_POST['id_mt_affect'];
 $nom_mt_affect=$_POST['nom_mt_affect'];
+$etat_affect=$_POST['etat_affect'];
 
-$req1="INSERT INTO affectation_pro (id_pro_affect,nom_pro_affect,id_ut_affect,nom_ut_affect,id_mt_affect,nom_mt_affect)
+$req1="INSERT INTO affectation_pro (id_pro_affect,nom_pro_affect,id_ut_affect,nom_ut_affect,id_mt_affect,nom_mt_affect,etat_affect)
 
-VALUES ('$id_pro_affect','$nom_pro_affect','$id_ut_affect','$nom_ut_affect','$id_mt_affect','$nom_mt_affect')";
+VALUES ('$id_pro_affect','$nom_pro_affect','$id_ut_affect','$nom_ut_affect','$id_mt_affect','$nom_mt_affect','$etat_affect')";
 
 mysqli_query($conn,$req1)  or die(mysqli_error()) ;
-//header('location: saisie_proprietaire.php ');
+header('location: saisie_proprietaire.php ');
 }
 
 
@@ -46,11 +47,12 @@ $req2=("SELECT * FROM moyen_de_transport WHERE id_mt='".$_SESSION['id_mt']."'  "
 $res2=mysqli_query($conn,$req2) or die(mysqli_error());
 ?>
 
-Le vehicule des specificités ci dessous:<br>
+Le vehicule des specificités ci dessous:<br><br>
 
  <?php while ($aff2=mysqli_fetch_assoc($res2)){?>
         
-
+NUMERO PLAQUE: <?php echo ($aff2['num_plaque_mt'])?><br>
+MARQUE: <?php echo ($aff2['marque_mt'])?><br>  
 MODELE: <?php echo ($aff2['model_mt'])?><br> 
 NUMERO DE PLAQUE: <?php echo ($aff2['num_plaque_mt'])?><br>
 TYPE :<?php echo ($aff2['type_mt'])?><br>
@@ -62,7 +64,7 @@ COULEUR: <?php echo ($aff2['couleur_mt'])?><br>
                   
 <?php }?>
 <br><br>
-Sera affecter a:<br>
+Sera affecter au proprietaire:<br><br>
 
 <?php
 
@@ -108,6 +110,7 @@ $res2=mysqli_query($conn,$req2) or die(mysqli_error());
         
 <input class="text" type="hidden" name="id_mt_affect" value="<?php echo ($aff2['id_mt'])?>"><br>
 <input class="text" type="hidden" name="nom_mt_affect" value="<?php echo ($aff2['model_mt'])?>"><br> 
+
                   
 <?php }?>
 
@@ -123,6 +126,8 @@ $res2=mysqli_query($conn,$req2) or die(mysqli_error());
         
 <input class="text" type="hidden" name="id_pro_affect" value="<?php echo ($aff2['id_pro'])?>"><br>
 <input class="text" type="hidden" name="nom_pro_affect" value="<?php echo ($aff2['nom_pro'])?>"><br> 
+
+<input class="text" type="hidden" name="etat_affect" value="non"><br> 
                   
 <?php }?>
 <input type="submit" name="submit" value="Affecter">
