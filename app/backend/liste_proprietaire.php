@@ -21,7 +21,7 @@ include('connexion.php');
 //$_SESSION['id_div'] =$id_div;
 //echo $_SESSION['id_div'];
 
-$req=("SELECT * FROM proprietaire ");
+$req=("SELECT * FROM proprietaire ORDER BY date_enreg_proprietaire DESC ");
 $res=mysqli_query($conn,$req) or die(mysqli_error());
 ?>
                     LISTE DES PROPRIETAIRES <br><br>

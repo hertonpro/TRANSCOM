@@ -4,14 +4,15 @@ require('connexion.php');
 ?>
 
 <?php
-$date_enreg_affect_pro = new DateTime();
-echo $date_enreg_affect_pro->format('Y-m-d H:i:s');
+// $date_enreg_affect_cond = new DateTime();
+// echo $date_enreg_affect_cond->format('Y-m-d H:i:s');
 ?>
 <?php
-$id_pro=htmlspecialchars($_GET['id_pro'])  ;
 
-$_SESSION['id_pro']=htmlentities ($_GET['id_pro']);
-//echo $_SESSION['id_pro'];
+$id_cond=htmlspecialchars($_GET['id_cond'])  ;
+
+$_SESSION['id_cond']=htmlentities ($_GET['id_cond']);
+echo $_SESSION['id_cond'];
 
 //echo $_SESSION['nom_ut'];
 
@@ -19,22 +20,25 @@ if(isset($_POST['submit']))
 {
 
 
-$date_enreg_affect_pro=$_POST['date_enreg_affect_pro'];
-$id_pro_affect=$_POST['id_pro_affect'];
-$nom_pro_affect=$_POST['nom_pro_affect'];
+//$date_enreg_affect_pro=$_POST['date_enreg_affect_pro'];
+$id_cond_affect=$_POST['id_cond_affect'];
+$nom_cond_affect=$_POST['nom_cond_affect'];
 $id_ut_affect=$_POST['id_ut_affect'];
 $nom_ut_affect=$_POST['nom_ut_affect'];
 $id_mt_affect=$_POST['id_mt_affect'];
 $nom_mt_affect=$_POST['nom_mt_affect'];
-$etat_affect=$_POST['etat_affect'];
+$type_cond_affect=$_POST['type_cond_affect'];
+$etat_cond_affect=$_POST['etat_cond_affect'];
 
-$req1="INSERT INTO affectation_pro (id_pro_affect,nom_pro_affect,id_ut_affect,nom_ut_affect,id_mt_affect,nom_mt_affect,etat_affect,date_enreg_affect_pro)
 
-VALUES ('$id_pro_affect','$nom_pro_affect','$id_ut_affect','$nom_ut_affect','$id_mt_affect','$nom_mt_affect','$etat_affect','$date_enreg_affect_pro')";
+$req1="INSERT INTO affectation_conducteur (id_cond_affect,nom_cond_affect,id_ut_affect,nom_ut_affect,id_mt_affect,nom_mt_affect,type_cond_affect,etat_cond_affect)
+
+VALUES ('$id_cond_affect','$nom_cond_affect','$id_ut_affect','$nom_ut_affect','$id_mt_affect','$nom_mt_affect','$type_cond_affect','$etat_cond_affect')";
 
 mysqli_query($conn,$req1)  or die(mysqli_error()) ;
-header('location: liste_proprietaire.php ');
+header('location: liste_conducteur.php ');
 }
+
 
 
 ?>
@@ -69,20 +73,20 @@ COULEUR: <?php echo ($aff2['couleur_mt'])?><br>
                   
 <?php }?>
 <br><br>
-Sera affecter au proprietaire:<br><br>
+Sera affecter au Conducteur:<br><br>
 
 <?php
 
 //echo $_SESSION['id_mt'];
-$req2=("SELECT * FROM proprietaire WHERE id_pro='".$_SESSION['id_pro']."'  ");
+$req2=("SELECT * FROM conducteur WHERE id_cond='".$_SESSION['id_cond']."'  ");
 $res2=mysqli_query($conn,$req2) or die(mysqli_error());
 ?>
 
  <?php while ($aff2=mysqli_fetch_assoc($res2)){?>
         
-NOM: <?php echo ($aff2['nom_pro'])?><br> 
-POSTNOM: <?php echo ($aff2['postnom_pro'])?><br>
-PRENOM:<?php echo ($aff2['prenom_pro'])?><br>
+NOM: <?php echo ($aff2['nom_cond'])?><br> 
+POSTNOM: <?php echo ($aff2['postnom_cond'])?><br>
+PRENOM:<?php echo ($aff2['prenom_cond'])?><br>
                   
 <?php }?>
 
@@ -123,19 +127,26 @@ $res2=mysqli_query($conn,$req2) or die(mysqli_error());
 <?php
 
 //echo $_SESSION['id_mt'];
-$req2=("SELECT * FROM proprietaire WHERE id_pro='".$_SESSION['id_pro']."'  ");
+$req2=("SELECT * FROM conducteur WHERE id_cond='".$_SESSION['id_cond']."'  ");
 $res2=mysqli_query($conn,$req2) or die(mysqli_error());
 ?>
 
  <?php while ($aff2=mysqli_fetch_assoc($res2)){?>
         
-<input class="text" type="hidden" name="id_pro_affect" value="<?php echo ($aff2['id_pro'])?>"><br>
-<input class="text" type="hidden" name="nom_pro_affect" value="<?php echo ($aff2['nom_pro'])?>"><br> 
-Affecter à une autre personne?<br>
-<select name="etat_affect" required="oui">
+<input class="text" type="hidden" name="id_cond_affect" value="<?php echo ($aff2['id_cond'])?>"><br>
+<input class="text" type="hidden" name="nom_cond_affect" value="<?php echo ($aff2['nom_cond'])?>"><br> 
+Affecter à un autre CONDUCTEUR?<br>
+<select name="etat_cond_affect" required="">
 	<option></option>
-	<option class="non" value="non">Non</option>
+	<option value="non">Non</option>
 	<option value="oui">Oui</option>
+</select><br>
+TYPE DE CONDUCTEUR:
+<select name="type_cond_affect" required="">
+	<option></option>
+	<option value="Taximan">Taximan</option>
+	<option value="motard">Motard</option>
+	<option value="autre">Autre Conducteur</option>
 </select>
                   
 <?php }?>

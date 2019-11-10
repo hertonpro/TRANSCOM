@@ -54,6 +54,14 @@ mysqli_query($conn,$req1)  or die(mysqli_error()) ;
 <body>
  <a href="deconnexion.php">Deconnexion</a><br>
 
+<form  method="GET" action="chercher_conducteur_affect.php">
+         <input id="search-input" name="recherche_nom_cond" value="" placeholder="chercher conducteur"  type="text" >
+         
+         <button type="submit"  name="submit">Go</button>
+         </span> 
+    </form>
+
+
 <form method="POST" action="" enctype="multipart/form-data" accept-charset="utf-8">
 	NOM: <input type="text" name="nom_cond"><br>
 	POSTNOM: <input type="text" name="postnom_cond"><br>
@@ -121,6 +129,8 @@ $res2=mysqli_query($conn,$req2) or die(mysqli_error());
     Numero matricule: <?php echo ($aff['postnom_cond'])?><br>
     Numero matricule: <?php echo ($aff['prenom_cond'])?><br>
 
+<br>
+<a href="affectation_conducteur.php?id_cond=<?php echo ($aff['id_cond'])?>"><button > Aller affecter le Taximan </button></a>
    <hr class="two">
       <?php }?>
 

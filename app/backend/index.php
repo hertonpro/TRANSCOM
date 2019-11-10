@@ -35,9 +35,7 @@ $_SESSION['nom_ut'] =htmlentities ($_POST['nom_ut']);
 <!doctype html>
 <html lang="en">
   <head>
- <?php
- //include('header_index.php');
- ?>
+
   </head>
   <body>
 

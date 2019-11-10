@@ -5,7 +5,7 @@ include('connexion.php');
 ?>
 
 <?php
-include('menu.php');
+include('menu_mt.php');
 
 ?>
 
@@ -58,7 +58,7 @@ $res=mysqli_query($conn,$req) or die(mysqli_error());
 
       <hr class="two">
       <?php
-       $req=("SELECT * FROM affectation_pro, proprietaire ,moyen_de_transport WHERE proprietaire.id_pro = affectation_pro.id_pro_affect AND moyen_de_transport.id_mt = affectation_pro.id_mt_affect AND  id_mt_affect='".$_SESSION['id_mt']."' ");
+       $req=("SELECT * FROM affectation_pro, proprietaire ,moyen_de_transport WHERE proprietaire.id_pro = affectation_pro.id_pro_affect AND moyen_de_transport.id_mt = affectation_pro.id_mt_affect AND  id_mt_affect='".$_SESSION['id_mt']."' ORDER BY date_enreg_affect_pro DESC ");
         $res=mysqli_query($conn,$req) or die(mysqli_error());
       ?>
 
@@ -67,10 +67,31 @@ $res=mysqli_query($conn,$req) or die(mysqli_error());
        Postnom proprietaire: <?php echo ($aff['postnom_pro'])?><br>
        Prenom: <?php echo ($aff['prenom_pro'])?><br>
 
-      <hr class="two">
+ <label>Consulter Vehicule:</label>
+ <a href="apercu_proprietaire.php?id_pro=<?php echo ($aff['id_pro']) ?>"><button class="btn btn-warning btn-sm" ><strong>Consulter Proprietaire:</strong> </button></a>
+
+
+      <hr>
       <?php }?>
       
 <h2 class="mb-4">APERCU GENERAL NOM CHAUFFEUR</h2>
+
+<?php
+       $req=("SELECT * FROM affectation_conducteur, conducteur ,moyen_de_transport WHERE conducteur.id_cond = affectation_conducteur.id_cond_affect AND moyen_de_transport.id_mt = affectation_conducteur.id_mt_affect AND  id_mt_affect='".$_SESSION['id_mt']."' ORDER BY date_enreg_affect_cond DESC ");
+        $res=mysqli_query($conn,$req) or die(mysqli_error());
+      ?>
+
+      <?php while ($aff=mysqli_fetch_assoc($res)){?>
+       Non proprietaire: <?php echo ($aff['nom_cond'])?><br>
+       Postnom proprietaire: <?php echo ($aff['postnom_cond'])?><br>
+       Prenom: <?php echo ($aff['prenom_cond'])?><br>
+
+ <label>Consulter Vehicule:</label>
+ <a href="apercu_conducteur.php?id_cond=<?php echo ($aff['id_cond']) ?>"><button class="btn btn-warning btn-sm" ><strong>Consulter Conducteur:</strong> </button></a>
+
+
+      <hr>
+   <?php }?>
 
 
 <?php
