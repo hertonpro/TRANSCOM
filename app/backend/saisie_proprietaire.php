@@ -54,7 +54,7 @@ mysqli_query($conn,$req1)  or die(mysqli_error()) ;
 <body>
  <a href="deconnexion.php">Deconnexion</a><br>
 
-<form  method="GET" action="chercher_proprietaire.php">
+<form  method="GET" action="chercher_proprietaire_affect.php">
          <input id="search-input" name="recherche_nom_pro" value="" placeholder="chercher Proprietaire"  type="text" >
          
          <button type="submit"  name="submit">Go</button>

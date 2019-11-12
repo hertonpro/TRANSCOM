@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  ven. 08 nov. 2019 à 11:15
+-- Généré le :  mer. 06 nov. 2019 à 20:44
 -- Version du serveur :  10.1.38-MariaDB
 -- Version de PHP :  7.1.27
 
@@ -35,21 +35,23 @@ CREATE TABLE `affectation_pro` (
   `id_ut_affect` int(11) NOT NULL,
   `nom_ut_affect` varchar(255) NOT NULL,
   `id_mt_affect` int(11) NOT NULL,
-  `nom_mt_affect` varchar(255) NOT NULL,
-  `etat_affect` varchar(255) NOT NULL,
-  `date_enreg_affect_pro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `nom_mt_affect` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `affectation_pro`
 --
 
-INSERT INTO `affectation_pro` (`id_affect_pro`, `id_pro_affect`, `nom_pro_affect`, `id_ut_affect`, `nom_ut_affect`, `id_mt_affect`, `nom_mt_affect`, `etat_affect`, `date_enreg_affect_pro`) VALUES
-(1, 1, 'MIAMBA', 1, 'admin', 1, 'KIA', 'oui', '2019-11-07 11:40:14'),
-(2, 1, 'MIAMBA', 1, 'admin', 2, 'H2O', 'non', '2019-11-07 11:40:26'),
-(4, 2, 'SADIKI', 1, 'admin', 3, '2121', 'non', '2019-11-07 18:24:28'),
-(5, 3, 'BISIMWA', 1, 'admin', 5, 'VL', 'non', '2019-11-07 20:54:17'),
-(6, 4, 'OPIVA', 1, 'admin', 4, '1924', 'non', '2019-11-07 20:57:31');
+INSERT INTO `affectation_pro` (`id_affect_pro`, `id_pro_affect`, `nom_pro_affect`, `id_ut_affect`, `nom_ut_affect`, `id_mt_affect`, `nom_mt_affect`) VALUES
+(1, 1, 'rrrttte', 1, 'admin', 8, 'BENZ 354'),
+(2, 1, 'rrrttte', 1, 'admin', 8, 'BENZ 354'),
+(3, 1, 'rrrttte', 1, 'admin', 8, 'BENZ 354'),
+(15, 4, 'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr', 1, 'admin', 8, 'BENZ 354'),
+(16, 1, 'rrrttte', 1, 'admin', 7, 'RAV4'),
+(17, 1, 'rrrttte', 1, 'admin', 7, 'RAV4'),
+(18, 4, 'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr', 1, 'admin', 7, 'RAV4'),
+(19, 3, 'qqqqqq', 1, 'admin', 7, 'RAV4'),
+(20, 8, 'test', 1, 'admin', 6, 'ffff');
 
 -- --------------------------------------------------------
 
@@ -72,6 +74,15 @@ CREATE TABLE `alerte` (
   `date_enreg_alerte` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Déchargement des données de la table `alerte`
+--
+
+INSERT INTO `alerte` (`id_alerte`, `type_alerte`, `autre_alerte`, `date_alerte`, `lieu_alerte`, `description_alerte`, `casier_mt`, `id_ut_fk`, `nom_ut_fk`, `id_mt_fk`, `num_plaque_mt_fk`, `date_enreg_alerte`) VALUES
+(12, 'vol', 'wrwrrrr', '0000-00-00', 'rrrrr', 'rrrrr', 'non', 1, 'admin', 7, '1234/AB22', '2019-11-05 22:09:42'),
+(17, 'vol', '', '0000-00-00', '', '', 'i', 1, 'admin', 7, '1234/AB22', '2019-11-05 22:22:16'),
+(18, 'vol', '', '0000-00-00', '', '', 'non reglÃ©', 1, 'admin', 7, '1234/AB22', '2019-11-05 22:21:52');
+
 -- --------------------------------------------------------
 
 --
@@ -90,6 +101,19 @@ CREATE TABLE `assurance` (
   `num_plaque_mt_fk` varchar(255) NOT NULL,
   `date_enreg_assurance` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `assurance`
+--
+
+INSERT INTO `assurance` (`id_assurance`, `reff_assurance`, `date_livraison_assurance`, `date_expiration_assurance`, `scan_assurance`, `id_ut_fk`, `nom_ut_fk`, `id_mt_fk`, `num_plaque_mt_fk`, `date_enreg_assurance`) VALUES
+(4, '343', '2019-10-01', '2019-10-31', 'javascript.jpg', 1, 'admin', 7, 'RAV4', '2019-10-31 12:35:13'),
+(5, '23232', '2019-10-02', '2019-10-09', 'loc.png', 1, 'admin', 7, 'RAV4', '2019-10-31 12:46:38'),
+(6, '23232', '2019-10-02', '2019-10-09', 'loc.png', 1, 'admin', 7, 'RAV4', '2019-10-31 12:46:50'),
+(7, '66676', '2019-10-09', '2019-10-11', 'person_1.jpg', 1, 'admin', 7, 'RAV4', '2019-10-31 12:57:28'),
+(8, '33333333', '2019-10-02', '2019-10-02', '', 1, 'admin', 7, 'RAV4', '2019-10-31 14:00:23'),
+(9, 'testtttttttttt', '2019-10-02', '2019-10-09', 'person_1.jpg', 1, 'admin', 6, '2344', '2019-10-31 20:09:14'),
+(10, '', '0000-00-00', '0000-00-00', '', 1, 'admin', 9, '1234/1234', '2019-11-01 21:03:36');
 
 -- --------------------------------------------------------
 
@@ -128,7 +152,12 @@ CREATE TABLE `conducteur` (
 --
 
 INSERT INTO `conducteur` (`id_cond`, `nom_cond`, `postnom_cond`, `prenom_cond`, `sexe_cond`, `date_naiss_cond`, `lieu_naiss_cond`, `province_cond`, `ville_cond`, `commune_cond`, `quartier_cond`, `avennue_cond`, `num_domicile_cond`, `tel1_cond`, `tel2_cond`, `email_cond`, `scan_identite_cond`, `photo_cond`, `id_ut_fk`, `nom_ut_fk`, `id_mt_fk`, `num_plaque_mt_fk`, `date_enreg_conducteur`) VALUES
-(1, 'rrr', 'rrrtr', 'trtt', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, '', '2019-11-07 19:40:52');
+(1, '', '', '', 'MASCULIN', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', 1, 'admin', 1, '', '2019-10-31 17:20:50'),
+(2, 'rere', 't', 't', 'MASCULIN', '0000-00-00', 't', 't', 't', 't', 't', 't', 't', 't', 't', '', '', '', 1, 'admin', 7, 'RAV4', '2019-10-31 17:24:40'),
+(3, 'fdff', 'u', 'u', 'MASCULIN', '0000-00-00', 'j', 'h', 'j', 'h', 'j', 'j', 'k', 'lk', 'l', 'l', 'person_2.jpg', 'person_4.jpg', 1, 'admin', 7, 'RAV4', '2019-10-31 17:25:01'),
+(4, '', '', '', 'MASCULIN', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', 1, 'admin', 9, '1234/1234', '2019-11-01 21:03:42'),
+(5, '', '', '', 'MASCULIN', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', 1, 'admin', 6, '2344', '2019-11-05 20:19:18'),
+(6, 'twteywtt', 'tyty', 'tyt', 'MASCULIN', '0000-00-00', 'i', 'iu', 'iu', 'iu', 'i', 'ui', 'ui', 'jk', 'j', 'k', '', '', 1, 'admin', 6, '2344', '2019-11-05 20:19:28');
 
 -- --------------------------------------------------------
 
@@ -147,6 +176,19 @@ CREATE TABLE `controle_technique` (
   `num_plaque_mt_fk` int(11) NOT NULL,
   `date_enreg_controle_technique` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `controle_technique`
+--
+
+INSERT INTO `controle_technique` (`id_controle_technique`, `reff_controle_technique`, `date_livraison_controle_technique`, `date_expiration_controle_technique`, `id_ut_fk`, `nom_ut_fk`, `id_mt_fk`, `num_plaque_mt_fk`, `date_enreg_controle_technique`) VALUES
+(1, '333', '2019-10-01', '2019-10-23', 1, 0, 6, 0, '0000-00-00 00:00:00'),
+(2, '334', '2019-10-08', '2019-10-22', 1, 0, 6, 0, '0000-00-00 00:00:00'),
+(3, '222222222222', '2019-10-09', '2019-10-02', 1, 0, 6, 0, '0000-00-00 00:00:00'),
+(4, '', '0000-00-00', '0000-00-00', 1, 0, 6, 0, '2019-10-31 14:15:52'),
+(5, '', '0000-00-00', '0000-00-00', 1, 0, 6, 0, '2019-10-31 14:15:54'),
+(6, '6666666666666666777', '0000-00-00', '0000-00-00', 1, 0, 6, 0, '2019-10-31 14:16:00'),
+(7, '', '0000-00-00', '0000-00-00', 1, 0, 9, 1234, '2019-11-01 21:03:45');
 
 -- --------------------------------------------------------
 
@@ -176,11 +218,10 @@ CREATE TABLE `moyen_de_transport` (
 --
 
 INSERT INTO `moyen_de_transport` (`id_mt`, `num_plaque_mt`, `marque_mt`, `model_mt`, `type_mt`, `annee_fabrication_mt`, `num_chassis_mt`, `num_moteur_mt`, `main_mt`, `couleur_mt`, `image_mt`, `id_ut_fk`, `nom_ut_fk`, `date_enreg_mt`) VALUES
-(1, '1234/22', 'TOYOTA', 'KIA', 'vehicule', 2002, '000001', '000022', 'GAUCHE', 'ROSE', 'flag.png', 1, 'admin', '2019-11-07 10:33:25'),
-(2, '4321/21', 'HUMER', 'H2O', 'vehicule', 0000, '09876543', '123456789', 'GAUCHE', 'NOIR', 'javascript.jpg', 1, 'admin', '2019-11-07 10:39:20'),
-(3, '2346/22', 'VW', '2121', 'vehicule', 2008, '123456', '654321', '---Selectionez---', 'VERTE', 'wordpress.jpg', 1, 'admin', '2019-11-07 18:20:54'),
-(4, '3435/22', 'mercedes benz', '1924', 'vehicule', 2019, '098765434', '234567898765', '---Selectionez---', 'bleu', 'loc.png', 1, 'admin', '2019-11-07 20:43:57'),
-(5, '343465/87', 'VOLVO', 'VL', 'vehicule', 0000, '20374', '566677', 'GAUCHE', 'BB', 'javascript.jpg', 1, 'admin', '2019-11-07 20:52:10');
+(6, '2344', 'dsd', 'ffff', 'moto', 2019, '98765', '234567', 'droite', 'jaunr', 'javascript.jpg', 1, 'admin', '2019-11-01 07:49:08'),
+(7, '1234/AB22', 'TOYOTA', 'RAV4', 'vehicule', 2002, '1000009', '35567', 'droite', 'VERTE', 'webdesign.jpg', 1, 'admin', '2019-11-01 07:49:08'),
+(8, '654323AB/21', 'MERCEDES BENZ', 'BENZ 354', 'moto', 2019, '23456', '876543', 'gauche', 'ROUGE', 'reactjs.jpg', 1, 'admin', '2019-11-01 19:47:55'),
+(9, '1234/1234', 'MERCEDES BENZ', 'muuu', 'vehicule', 2019, '444555', '33366666', 'GAUCHE', 'j', 'person_1.jpg', 1, 'admin', '2019-11-01 07:50:08');
 
 -- --------------------------------------------------------
 
@@ -201,6 +242,16 @@ CREATE TABLE `permis` (
   `num_plaque_mt_fk` varchar(255) NOT NULL,
   `date_enreg_permis` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `permis`
+--
+
+INSERT INTO `permis` (`id_permis`, `type_permis`, `date_livraison_permis`, `date_expiration_permis`, `scan_permis`, `date_jour`, `id_ut_fk`, `nom_ut_fk`, `id_mt_fk`, `num_plaque_mt_fk`, `date_enreg_permis`) VALUES
+(48, 'A,B,C,D', '2019-11-01', '2019-11-03', '', '2019-11-02', 1, 'admin', 6, 'ffff', '2019-11-02 21:18:45'),
+(49, 'A,B,C,D', '2019-11-01', '2019-11-01', '', '2019-11-02', 1, 'admin', 6, 'ffff', '2019-11-02 21:18:58'),
+(50, 'A,B,C,D', '2019-10-01', '2019-11-01', '', '2019-11-02', 1, 'admin', 6, 'ffff', '2019-11-02 21:20:39'),
+(51, 'A,B,C,D', '2019-10-01', '2019-10-05', '', '2019-11-02', 1, 'admin', 6, 'ffff', '2019-11-02 21:20:55');
 
 -- --------------------------------------------------------
 
@@ -239,10 +290,15 @@ CREATE TABLE `proprietaire` (
 --
 
 INSERT INTO `proprietaire` (`id_pro`, `nom_pro`, `postnom_pro`, `prenom_pro`, `sexe_pro`, `date_naiss_pro`, `lieu_naiss_pro`, `province_pro`, `ville_pro`, `commune_pro`, `quartier_pro`, `avennue_pro`, `num_domicile_pro`, `tel1_pro`, `tel2_pro`, `email_pro`, `scan_identite_pro`, `photo_pro`, `id_ut_fk`, `nom_ut_fk`, `id_mt_fk`, `num_plaque_mt_fk`, `date_enreg_proprietaire`) VALUES
-(1, 'MIAMBA', 'MIB', 'JEEF', 'MASCULIN', '2019-11-06', 'UVIRA', 'SK', 'BUKAVU', 'IBANDA', 'NDENDERE', 'MUHUNGU', '20', '000999898', '98989889', '', '', 'profil2.jpg', 1, 'admin', 1, '1234/22', '2019-11-07 10:37:49'),
-(2, 'SADIKI', 'KIJINGO', 'FABRICE', 'MASCULIN', '2019-11-04', 'BUKAVU', 'SK', '', 'IBANDA', '', 'MUHUNGU', '23', '345678', '987654', '', '', 'operateur.jpg', 1, 'admin', 3, '2346/22', '2019-11-07 18:24:16'),
-(3, 'BISIMWA', 'KILO', 'JOHN', 'MASCULIN', '2019-11-08', '', '', '', '', '', '', '', '', '', '', '', 'person_2.jpg', 1, 'admin', 5, '343465/87', '2019-11-07 20:54:02'),
-(4, 'OPIVA', 'KILICHO', 'BABYLON', 'MASCULIN', '2019-11-06', '', '', '', '', '', '', '', '', '', '', '', 'person_6.jpg', 1, 'admin', 4, '3435/22', '2019-11-07 20:57:27');
+(1, 'rrrttte', '', '', 'MASCULIN', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', 1, 'admin', 7, 'RAV4', '2019-10-31 20:28:13'),
+(2, 'trtytytUIuoUOIuoIOOo', 'oi', 'o', 'MASCULIN', '0000-00-00', 'j', 'hj', 'j', 'j', 'kj', 'j', 'l', 'l', 'j', 'k', '', '', 1, 'admin', 7, 'RAV4', '2019-10-31 18:15:51'),
+(3, 'qqqqqq', 'qqqqqqqq', 'qqqqq', 'MASCULIN', '2019-10-01', 'qqqqqq', 'qqqqqqqqq', 'qqqqqqqq', 'qqqqqqq', 'qqqqqqqqqq', 'qqqqqqqq', 'qqqqqqqq', 'qqqqqqqqqqq', 'qqqqqqqqq', 'qqqqqqq', 'person_2.jpg', 'person_4.jpg', 1, 'admin', 7, '1234/AB22', '2019-10-31 18:21:49'),
+(4, 'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr', '', '', 'MASCULIN', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', 1, 'admin', 7, '1234/AB22', '2019-10-31 18:32:19'),
+(5, '', '', '', 'MASCULIN', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', 1, 'admin', 9, '1234/1234', '2019-11-01 21:03:31'),
+(6, 'rtggggg', 'tyt', 'ty', 'MASCULIN', '0000-00-00', 'iu', 'gu', 'gj', 'j', 'gh', '', 'j', 'j', 'j', 'j', '', '', 1, 'admin', 8, '654323AB/21', '2019-11-02 12:20:33'),
+(7, '', '', '', 'MASCULIN', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', 1, 'admin', 6, '2344', '2019-11-02 19:40:54'),
+(8, 'test', '', '', 'MASCULIN', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', 1, 'admin', 6, '2344', '2019-11-02 19:41:12'),
+(9, 'pro', 'defdf', 'prpoeo', 'FEMININ', '2019-11-06', 'ewe', 'wwww', 'wewe', 'wewrer', 'rrtr', 'dfdfdf', 'dddd', 'dfdfd', 'dfdf', 'fdfdf', '', '', 1, 'admin', 7, '1234/AB22', '2019-11-05 20:07:18');
 
 -- --------------------------------------------------------
 
@@ -262,6 +318,23 @@ CREATE TABLE `taxe_voirie` (
   `num_plaque_mt_fk` varchar(255) NOT NULL,
   `date_enreg_taxe_voirie` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `taxe_voirie`
+--
+
+INSERT INTO `taxe_voirie` (`id_taxe_voirie`, `reff_taxe_voirie`, `date_livraison_taxe_voirie`, `date_expiration_taxe_voirie`, `scan_taxe_voirie`, `id_ut_fk`, `nom_ut_fk`, `id_mt_fk`, `num_plaque_mt_fk`, `date_enreg_taxe_voirie`) VALUES
+(1, '', '0000-00-00', '0000-00-00', '', 1, 'admin', 6, 'ffff', '0000-00-00 00:00:00'),
+(2, '4434', '2019-10-01', '2019-10-15', 'javascript.jpg', 1, 'admin', 6, 'ffff', '0000-00-00 00:00:00'),
+(3, '6567777', '2019-10-08', '2019-10-15', 'person_1.jpg', 1, 'admin', 6, 'ffff', '0000-00-00 00:00:00'),
+(4, '6567777', '2019-10-08', '2019-10-15', 'person_1.jpg', 1, 'admin', 6, 'ffff', '0000-00-00 00:00:00'),
+(5, '6567777', '2019-10-08', '2019-10-15', 'person_1.jpg', 1, 'admin', 6, 'ffff', '0000-00-00 00:00:00'),
+(6, '', '0000-00-00', '0000-00-00', '', 1, 'admin', 7, 'RAV4', '0000-00-00 00:00:00'),
+(7, '7654', '2019-10-02', '2019-10-09', 'webdesign.jpg', 1, 'admin', 7, 'RAV4', '0000-00-00 00:00:00'),
+(8, '7654', '2019-10-22', '2019-10-10', 'person_1.jpg', 1, 'admin', 7, 'RAV4', '0000-00-00 00:00:00'),
+(9, '77', '2019-10-09', '2019-10-01', '', 1, 'admin', 6, 'ffff', '0000-00-00 00:00:00'),
+(10, '9999999999', '2019-10-01', '2019-10-01', '', 1, 'admin', 6, 'ffff', '0000-00-00 00:00:00'),
+(11, '', '0000-00-00', '0000-00-00', '', 1, 'admin', 9, '1234/1234', '2019-10-31 23:00:00');
 
 -- --------------------------------------------------------
 
@@ -308,6 +381,19 @@ CREATE TABLE `vignette` (
   `num_plaque_mt_fk` varchar(255) NOT NULL,
   `date_enreg_vignette` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `vignette`
+--
+
+INSERT INTO `vignette` (`id_vignette`, `reff_vignette`, `date_livraison_vignette`, `date_expiration_vignette`, `scan_vignette`, `id_ut_fk`, `nom_ut_fk`, `id_mt_fk`, `num_plaque_mt_fk`, `date_enreg_vignette`) VALUES
+(1, '', '0000-00-00', '0000-00-00', '', 1, 'admin', 6, 'ffff', '0000-00-00 00:00:00'),
+(2, '', '0000-00-00', '0000-00-00', '', 1, 'admin', 6, 'ffff', '0000-00-00 00:00:00'),
+(3, 'yyyyy', '2019-10-01', '2019-10-09', 'javascript.jpg', 1, 'admin', 6, 'ffff', '0000-00-00 00:00:00'),
+(4, '', '0000-00-00', '0000-00-00', '', 1, 'admin', 7, 'RAV4', '0000-00-00 00:00:00'),
+(5, '', '0000-00-00', '0000-00-00', '', 1, 'admin', 7, 'RAV4', '0000-00-00 00:00:00'),
+(6, '', '2019-10-01', '2019-10-09', '', 1, 'admin', 7, 'RAV4', '0000-00-00 00:00:00'),
+(7, '', '0000-00-00', '0000-00-00', '', 1, 'admin', 9, '1234/1234', '2019-11-01 21:03:34');
 
 --
 -- Index pour les tables déchargées
@@ -387,55 +473,55 @@ ALTER TABLE `vignette`
 -- AUTO_INCREMENT pour la table `affectation_pro`
 --
 ALTER TABLE `affectation_pro`
-  MODIFY `id_affect_pro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_affect_pro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT pour la table `alerte`
 --
 ALTER TABLE `alerte`
-  MODIFY `id_alerte` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_alerte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT pour la table `assurance`
 --
 ALTER TABLE `assurance`
-  MODIFY `id_assurance` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_assurance` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT pour la table `conducteur`
 --
 ALTER TABLE `conducteur`
-  MODIFY `id_cond` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_cond` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `controle_technique`
 --
 ALTER TABLE `controle_technique`
-  MODIFY `id_controle_technique` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_controle_technique` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT pour la table `moyen_de_transport`
 --
 ALTER TABLE `moyen_de_transport`
-  MODIFY `id_mt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_mt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT pour la table `permis`
 --
 ALTER TABLE `permis`
-  MODIFY `id_permis` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_permis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT pour la table `proprietaire`
 --
 ALTER TABLE `proprietaire`
-  MODIFY `id_pro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_pro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT pour la table `taxe_voirie`
 --
 ALTER TABLE `taxe_voirie`
-  MODIFY `id_taxe_voirie` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_taxe_voirie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT pour la table `utilisateur`
@@ -447,7 +533,7 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT pour la table `vignette`
 --
 ALTER TABLE `vignette`
-  MODIFY `id_vignette` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_vignette` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

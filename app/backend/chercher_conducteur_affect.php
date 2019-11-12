@@ -23,11 +23,12 @@ $res=mysqli_query($conn,$req) or  die(mysqli_error());
 
           <?php while ($aff=mysqli_fetch_assoc($res)){?>
                 
-                <p class="black"> NOM PROPRIETAIRE: <?php echo ($aff['nom_cond']) ?></p>
-                <p class="black">POSTNOM PROPRIETAIRE: <?php echo ($aff['postnom_cond']) ?></p>
-                 <p class="black">PRENOM PROPRIETAIRE: <?php echo ($aff['prenom_cond']) ?></p>      
+                <p class="black"> NOM CONDUCTEUR: <?php echo ($aff['nom_cond']) ?></p>
+                <p class="black">POSTNOM CONDUCTEUR: <?php echo ($aff['postnom_cond']) ?></p>
+                 <p class="black">PRENOM CONDUCTEUR: <?php echo ($aff['prenom_cond']) ?></p>      
 
 
+                <a href="affectation_conducteur.php?id_cond=<?php echo ($aff['id_cond'])?>"><button ><p><strong> Aller affecter conducteur </strong></p></button></a>  
 <?php }?>
 
 
