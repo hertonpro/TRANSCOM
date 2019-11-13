@@ -13,12 +13,14 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="list_MT.html">
+                        <a href="?p=list_MT">
                             <div class="panel-footer">
                                 <span class="pull-left">Voir les détails</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
+                        </a>
+                        <a href="?p=saisie_transport_terrestre">
                             <div class="panel-footer">
                                 <span class="pull-left">Saisi MT</span>
                                 <span class="pull-right"><i class="fa fa-edit"></i></span>
@@ -40,7 +42,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="?p=saisie_proprietaire">
                             <div class="panel-footer">
                                 <span class="pull-left">Voir les détails</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

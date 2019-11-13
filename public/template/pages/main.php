@@ -297,7 +297,7 @@
                             </div>
                         </li>
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="?p=menu"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Statistique<span class="fa arrow"></span></a>
@@ -341,7 +341,8 @@
                 <!-- /.col-lg-12 -->
                 <!-- container-space -->
                 <?php
-                include('saisie_transport_terrestre.php');            
+                var_dump($_GET);
+                include('../../../app/Controllers/autoloader.php');            
                 ?>
             </div>
         <!-- /#page-wrapper -->

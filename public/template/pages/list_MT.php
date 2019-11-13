@@ -2,7 +2,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <a href="" class="btn btn-primary">Ajouter</a> DataTables Advanced Tables
+                    <a href="main.php?p=saisie_transport_terrestre" class="btn btn-primary">Ajouter</a> DataTables Advanced Tables
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">

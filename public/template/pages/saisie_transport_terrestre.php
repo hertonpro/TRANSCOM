@@ -51,7 +51,7 @@
                                 </label>
                             </div>
                             <div class="text-right">
-                                <button type="submit" class="btn btn-primary btn-positio-left">suivant</button>
+                                <a class="btn btn-primary btn-positio-left" href="main.php?p=saisie_proprietaire" >suivant</a>
                             </div>
                             <button type="reset" class="btn btn-default">Reset Button</button>
                         </form>

@@ -33,40 +33,39 @@
 							<div class="form-group">
                             	
                             </div>
-                            <div class="form-group">ID chassis
+                            <div class="form-group"> Province
                               <input class="form-control" placeholder="Enter text">
                             </div>
-							<div class="form-group">ID chassis
-                              <input class="form-control" placeholder="Enter text">
+							<div class="form-group"> ville
+							  <input class="form-control" placeholder="Enter text">
+                          </div>
+							<div class="form-group">Commune&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+<input class="form-control" placeholder="Enter text">
+                          </div>
+							<div class="form-group"> Quartier
+							  <input class="form-control" placeholder="Enter text">
+                          </div>
+							<div class="form-group">Avennue&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+<input class="form-control" placeholder="Enter text">
+                          </div>
+						  <div class="form-group"> Numero domicile
+						    <input class="form-control" placeholder="Enter text">
                             </div>
-							<div class="form-group">ID chassis
-                              <input class="form-control" placeholder="Enter text">
+							<div class="form-group">Phone&nbsp; &nbsp; &nbsp; &nbsp;
+<input class="form-control" placeholder="Enter text">
                             </div>
-							<div class="form-group">ID chassis
-                              <input class="form-control" placeholder="Enter text">
-                            </div>
-							<div class="form-group">ID chassis
-                              <input class="form-control" placeholder="Enter text">
-                            </div>
-							<div class="form-group">ID moteur
-                              <input class="form-control" placeholder="Enter text">
-                            </div>
-							<div class="form-group">Couleur
-                              <input class="form-control" placeholder="Enter text">
-                            </div>
+							<div class="form-group">Mail&nbsp; &nbsp; &nbsp; &nbsp;
+<input type="mail" class="form-control" placeholder="exemple(exemple@mail.com)">
+                          </div>
                             <div class="form-group">
                                     <label>Image</label>
                                     <input class="form-control" type="file" placeholder="Enter text">
                             </div>
-                            <div class="form-group">
-                                <label>Inline Radio Buttons</label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked> gauche
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="option2">droite
-                                </label>
+							<div class="form-group">
+                                    <label>Scan ID</label>
+                                    <input class="form-control" type="file" placeholder="Enter text">
                             </div>
+                            
                             <div class="text-right">
                                 <button type="submit" class="btn btn-primary btn-positio-left">suivant</button>
                             </div>
