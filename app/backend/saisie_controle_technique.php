@@ -35,7 +35,7 @@ mysqli_query($conn,$req1)  or die(mysqli_error()) ;
 <head>
   <title></title>
     <?php 
-  include ('menu_mt.php');
+  include ('menu.php');
   ?><br>
 </head>
 <body>
@@ -56,7 +56,7 @@ $res2=mysqli_query($conn,$req2) or die(mysqli_error());
  <?php while ($aff2=mysqli_fetch_assoc($res2)){?>
         
 <input class="text" type="hidden" name="id_ut_fk" value="<?php echo ($aff2['id_ut'])?>">
-<input class="text" type="hidde" name="nom_ut_fk" value="<?php echo ($aff2['nom_ut'])?>">
+<input class="text" type="hidden" name="nom_ut_fk" value="<?php echo ($aff2['nom_ut'])?>">
                   
 <?php }?>
 
@@ -92,32 +92,6 @@ $res2=mysqli_query($conn,$req2) or die(mysqli_error());
     Numero matricule: <?php echo ($aff['date_livraison_controle_technique'])?><br>
     Numero matricule: <?php echo ($aff['date_expiration_controle_technique'])?><br>
 
-
-      <?php $x=abs(floor(strtotime($aff['date_expiration_controle_technique'])/ (60*60*24)));
-      //echo " Nbre de Jrs jusqu'a l'exp: ".$z."</br>";  ?>
-      <?php  $date_jour= date('Y/m/d'); ?>
-     
-      <?php $z=abs(floor(strtotime($aff['date_livraison_controle_technique'])/ (60*60*24)));
-      $y=abs(floor(strtotime($date_jour)/ (60*60*24)));
-     
-
-   $rest_jours=$x-$y;
-      
-      echo $x-$z .' Jour(s) de validité'.'<br>'; 
-      //echo $z .'<br>'; 
-      //echo $rest_jours .'<br>';
-      ?>  
-
-     <?php
-      if($rest_jours>=0){
-
-        echo $alerte='<strong>'.'<p class="">'."Le controle_technique reste avec ". $rest_jours.' Jour(s)'.'</p>'.'</strong>';
-      }
-
-      elseif($rest_jours<0){
-         echo $alerte='<strong>'.'<p class="blue" >'."Le controle_technique a expiré il y a ".$rest_jours.' Jour(s)'. '</p>'.'<strong>';
-      }
-      ?>
    <hr class="two">
       <?php }?>
 

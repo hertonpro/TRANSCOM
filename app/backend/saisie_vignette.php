@@ -40,7 +40,7 @@ mysqli_query($conn,$req1)  or die(mysqli_error()) ;
   <title></title>
 
     <?php 
-  include ('menu_mt.php');
+  include ('menu.php');
   ?><br>
 </head>
 <body>
@@ -83,7 +83,7 @@ $res2=mysqli_query($conn,$req2) or die(mysqli_error());
   <input type="submit" name="submit" value="Enregistrer">
 </form>
 
-       <h2 class="mb-4">APERCU GENERAL VIGNETTE</h2>
+       <h2 class="mb-4">APERCU GENERAL TAXE VOIRIE</h2>
 
       <hr class="two">
       <?php
@@ -96,33 +96,6 @@ $res2=mysqli_query($conn,$req2) or die(mysqli_error());
     Refference : <?php echo ($aff['reff_vignette'])?><br>
     Date livraison: <?php echo ($aff['date_livraison_vignette'])?><br>
     Date d'expiration: <?php echo ($aff['date_expiration_vignette'])?><br>
-
-      <?php $x=abs(floor(strtotime($aff['date_expiration_vignette'])/ (60*60*24)));
-      //echo " Nbre de Jrs jusqu'a l'exp: ".$z."</br>";  ?>
-      <?php  $date_jour= date('Y/m/d'); ?>
-     
-      <?php $z=abs(floor(strtotime($aff['date_livraison_vignette'])/ (60*60*24)));
-      $y=abs(floor(strtotime($date_jour)/ (60*60*24)));
-     
-
-   $rest_jours=$x-$y;
-      
-      echo $x-$z .' Jour(s) de validité'.'<br>'; 
-      //echo $z .'<br>'; 
-      //echo $rest_jours .'<br>';
-      ?>  
-
-     <?php
-      if($rest_jours>=0){
-
-        echo $alerte='<strong>'.'<p class="">'."La Vignette reste avec ". $rest_jours.' Jour(s)'.'</p>'.'</strong>';
-      }
-
-      elseif($rest_jours<0){
-         echo $alerte='<strong>'.'<p class="blue" >'."La Vignette a expirée il y a ".$rest_jours.' Jour(s)'. '</p>'.'<strong>';
-      }
-      ?>
-
 
    <hr class="two">
       <?php }?>

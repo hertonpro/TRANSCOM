@@ -35,8 +35,6 @@ $res=mysqli_query($conn,$req) or die(mysqli_error());
          <button type="submit"  name="submit">Go</button>
          </span> 
     </form>
-
-    <a href="saisie_transport_terrestre.php"><button>Ajouter</button></a>
                                   <table border="1px">
                                     <thead>
                                         <tr>
@@ -66,10 +64,6 @@ $res=mysqli_query($conn,$req) or die(mysqli_error());
                                     <?php }?>
                                 </table>
                             </div>
-
-<a href="liste_vehicule.php">Liste des Vehicules</a>
-<a href="liste_moto.php">Liste des Motos</a>
-                            
  <?php
  //include('footer.php');
  ?>

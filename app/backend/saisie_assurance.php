@@ -39,7 +39,7 @@ mysqli_query($conn,$req1)  or die(mysqli_error()) ;
 <head>
 	<title></title>
   <?php 
-  include ('menu_mt.php');
+  include ('menu.php');
   ?><br>
 </head>
 <body>
@@ -97,32 +97,6 @@ $res2=mysqli_query($conn,$req2) or die(mysqli_error());
     REFFERENCE ASSURANCE: <?php echo ($aff['reff_assurance'])?><br>
     DATE DE LIVRAISON: <?php echo ($aff['date_livraison_assurance'])?><br>
     DATE D'EXPIRATION: <?php echo ($aff['date_expiration_assurance'])?><br>
-
-      <?php $x=abs(floor(strtotime($aff['date_expiration_assurance'])/ (60*60*24)));
-      //echo " Nbre de Jrs jusqu'a l'exp: ".$z."</br>";  ?>
-      <?php  $date_jour= date('Y/m/d'); ?>
-     
-      <?php $z=abs(floor(strtotime($aff['date_livraison_assurance'])/ (60*60*24)));
-      $y=abs(floor(strtotime($date_jour)/ (60*60*24)));
-     
-
-   $rest_jours=$x-$y;
-      
-      echo $x-$z .' Jour(s) de validité'.'<br>'; 
-      //echo $z .'<br>'; 
-      //echo $rest_jours .'<br>';
-      ?>  
-
-     <?php
-      if($rest_jours>=0){
-
-        echo $alerte='<strong>'.'<p class="">'."L'assurance reste avec ". $rest_jours.' Jour(s)'.'</p>'.'</strong>';
-      }
-
-      elseif($rest_jours<0){
-         echo $alerte='<strong>'.'<p class="blue" >'."L'assurance a expirée il y a ".$rest_jours.' Jour(s)'. '</p>'.'<strong>';
-      }
-      ?>
 
 
    <hr class="two">

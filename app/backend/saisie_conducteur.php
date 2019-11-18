@@ -47,7 +47,7 @@ mysqli_query($conn,$req1)  or die(mysqli_error()) ;
 }
 ?>
   <?php 
-  include ('menu_mt.php');
+  include ('menu.php');
   ?><br>
 
 
@@ -63,24 +63,17 @@ mysqli_query($conn,$req1)  or die(mysqli_error()) ;
 
 
 <form method="POST" action="" enctype="multipart/form-data" accept-charset="utf-8">
-	NOM: <input type="text" name="nom_cond" required=""><br>
+	NOM: <input type="text" name="nom_cond"><br>
 	POSTNOM: <input type="text" name="postnom_cond"><br>
 	PRENOM: <input type="text" name="prenom_cond"><br>
   SEXE:
-  <select   name="sexe_cond" required="">
-     <option value="" selected="">---Selectionnez---</option>
+  <select   name="sexe_cond">
     <option value="MASCULIN">MASCULIN</option>
      <option value="FEMININ">FEMININ</option>
   </select><br>
   DATE DE NAISSANCE: <input type="date" name="date_naiss_cond"><br>
   LIEU DE NAISSANCE: <input type="text" name="lieu_naiss_cond"><br>
-  PROVINCE: 
-<select required="" name="province_cond">
-  <option value="">---Selectionnez---</option>
-  <option value="Sud-Kivu">Sud-Kivu</option>
-  <option value="Nord-Kivu">Nord-Kivu</option>
-</select>
-<br>
+  PROVINCE: <input type="text" name="province_cond"><br>
   VILLE: <input type="text" name="ville_cond"><br>
   COMMUNE: <input type="text" name="commune_cond"><br>
   QUARTIER: <input type="tex" name="quartier_cond"><br>
