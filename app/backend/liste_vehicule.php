@@ -24,7 +24,7 @@ include('connexion.php');
 //$_SESSION['id_div'] =$id_div;
 //echo $_SESSION['id_div'];
 
-$req=("SELECT * FROM moyen_de_transport ORDER BY date_enreg_mt DESC");
+$req=("SELECT * FROM moyen_de_transport WHERE type_mt = 'vehicule' ORDER BY date_enreg_mt DESC");
 $res=mysqli_query($conn,$req) or die(mysqli_error());
 ?>
                      LISTE DES VEHICULES <br><br>
@@ -66,10 +66,6 @@ $res=mysqli_query($conn,$req) or die(mysqli_error());
                                     <?php }?>
                                 </table>
                             </div>
-
-<a href="liste_vehicule.php">Liste des Vehicules</a>
-<a href="liste_moto.php">Liste des Motos</a>
-                            
  <?php
  //include('footer.php');
  ?>

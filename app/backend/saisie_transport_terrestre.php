@@ -32,7 +32,7 @@ $req1="INSERT INTO moyen_de_transport (num_plaque_mt,marque_mt,model_mt,type_mt,
 VALUES ('$num_plaque_mt','$marque_mt','$model_mt','$type_mt','$annee_fabrication_mt','$num_chassis_mt','$num_moteur_mt','$main_mt','$couleur_mt','$image_mt','$id_ut_fk','$nom_ut_fk')";
 
 mysqli_query($conn,$req1)  or die(mysqli_error()) ;
-header('location: saisie_proprietaire.php ');
+//header('location: saisie_proprietaire.php ');
 }
 
 
@@ -53,10 +53,11 @@ header('location: saisie_proprietaire.php ');
 
 
 <form method="POST" action="" enctype="multipart/form-data" accept-charset="utf-8">
-	Numero plaque: <input type="text" name="num_plaque_mt"><br>
+	Numero plaque: <input type="text" name="num_plaque_mt" required=""><br>
 	Marque: <input type="text" name="marque_mt"><br>
 	Model: <input type="text" name="model_mt"><br>
 	<select name="type_mt" required="">
+        <option selected="" value="">---Selectionez---</option>
 		<option value="vehicule">Vehicule</option>
 		<option value="moto">Moto</option>
 	</select><br>
@@ -65,9 +66,10 @@ header('location: saisie_proprietaire.php ');
 	Num moteur: <input type="text" name="num_moteur_mt"><br>
 
 	<select name="main_mt" required="">
-		<option selected="" >---Selectionez---</option>
+		<option selected="" value="">---Selectionez---</option>
 		<option value="GAUCHE"  >GAUCHE</option>
 		<option value="DROITE">DROITE</option>
+        <option value="AUTRE">AUTRE</option>
 	</select><br>
 	Couleur: <input type="text" name="couleur_mt"><br>
 	image: <input type="file" name="image_mt"><br>

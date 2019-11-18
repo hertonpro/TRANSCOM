@@ -5,7 +5,7 @@ include('connexion.php');
 ?>
 
 <?php
-include('menu_mt.php');
+include('menu_roullage.php');
 
 ?>
 
@@ -44,12 +44,11 @@ $res=mysqli_query($conn,$req) or die(mysqli_error());
 
                COULEUR:  <?php echo ($aff['couleur_mt'])?><br>
             
-<a href="details_moyen_de_transport.php?id_mt=<?php echo ($aff['id_mt']) ?>"><button class="btn btn-warning btn-sm" ><strong>Voir en detail:</strong> </button></a>
+<!-- <a href="details_moyen_de_transport.php?id_mt=<?php echo ($aff['id_mt']) ?>"><button class="btn btn-warning btn-sm" ><strong>Voir en detail:</strong> </button></a> -->
                 
                 <hr class="two">
 
             <?php }?>
-
 
 <!-- --------------------------------------------------------------------------- -->
 <a href="details_moyen_de_transport.php>Details"></a>
@@ -68,8 +67,8 @@ $res=mysqli_query($conn,$req) or die(mysqli_error());
        Postnom proprietaire: <?php echo ($aff['postnom_pro'])?><br>
        Prenom: <?php echo ($aff['prenom_pro'])?><br>
 
- <label>Consulter Vehicule:</label>
- <a href="apercu_proprietaire.php?id_pro=<?php echo ($aff['id_pro']) ?>"><button class="btn btn-warning btn-sm" ><strong>Consulter Proprietaire:</strong> </button></a>
+ <!--<label>Consulter Vehicule:</label>
+  <a href="apercu_proprietaire.php?id_pro=<?php echo ($aff['id_pro']) ?>"><button class="btn btn-warning btn-sm" ><strong>Consulter Proprietaire:</strong> </button></a> -->
 
 
       <hr>
@@ -87,15 +86,56 @@ $res=mysqli_query($conn,$req) or die(mysqli_error());
        Postnom proprietaire: <?php echo ($aff['postnom_cond'])?><br>
        Prenom: <?php echo ($aff['prenom_cond'])?><br>
 
- <label>Consulter Vehicule:</label>
- <a href="apercu_conducteur.php?id_cond=<?php echo ($aff['id_cond']) ?>"><button class="btn btn-warning btn-sm" ><strong>Consulter Conducteur:</strong> </button></a>
+<!--  <label>Consulter Vehicule:</label>
+ <a href="apercu_conducteur.php?id_cond=<?php echo ($aff['id_cond']) ?>"><button class="btn btn-warning btn-sm" ><strong>Consulter Conducteur:</strong> </button></a> -->
 
 
       <hr>
    <?php }?>
 
+ <h2 class="mb-4">APERCU GENERAL TAXE VOIRIE</h2>
+
+      <hr class="two">
+      <?php
+      $req=("SELECT * FROM vignette WHERE id_mt_fk='".$_SESSION['id_mt']."' ORDER BY date_enreg_vignette DESC ");
+      $res=mysqli_query($conn,$req) or die(mysqli_error());
+      ?>
+
+      <?php while ($aff=mysqli_fetch_assoc($res)){?>
+
+    Refference : <?php echo ($aff['reff_vignette'])?><br>
+    Date livraison: <?php echo ($aff['date_livraison_vignette'])?><br>
+    Date d'expiration: <?php echo ($aff['date_expiration_vignette'])?><br>
+
+      <?php $x=abs(floor(strtotime($aff['date_expiration_vignette'])/ (60*60*24)));
+      //echo " Nbre de Jrs jusqu'a l'exp: ".$z."</br>";  ?>
+      <?php  $date_jour= date('Y/m/d'); ?>
+     
+      <?php $z=abs(floor(strtotime($aff['date_livraison_vignette'])/ (60*60*24)));
+      $y=abs(floor(strtotime($date_jour)/ (60*60*24)));
+     
+
+   $rest_jours=$x-$y;
+      
+      echo $x-$z .' Jour(s) de validité'.'<br>'; 
+      //echo $z .'<br>'; 
+      //echo $rest_jours .'<br>';
+      ?>  
+
+     <?php
+      if($rest_jours>=0){
+
+        echo $alerte='<strong>'.'<p class="">'."La Vignette reste avec ". $rest_jours.' Jour(s)'.'</p>'.'</strong>';
+      }
+
+      elseif($rest_jours<0){
+         echo $alerte='<strong>'.'<p class="blue" >'."La Vignette a expirée il y a ".$rest_jours.' Jour(s)'. '</p>'.'<strong>';
+      }
+      ?>
 
 
+   <hr class="two">
+      <?php }?>
 
 
 <?php

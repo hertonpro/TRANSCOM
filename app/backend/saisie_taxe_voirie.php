@@ -39,7 +39,7 @@ mysqli_query($conn,$req1)  or die(mysqli_error()) ;
 <head>
 	<title></title>
     <?php 
-  include ('menu.php');
+  include ('menu_mt.php');
   ?><br>
 </head>
 <body>
@@ -96,6 +96,32 @@ $res2=mysqli_query($conn,$req2) or die(mysqli_error());
     Numero matricule: <?php echo ($aff['reff_taxe_voirie'])?><br>
     Numero matricule: <?php echo ($aff['date_livraison_taxe_voirie'])?><br>
     Numero matricule: <?php echo ($aff['date_expiration_taxe_voirie'])?><br>
+
+      <?php $x=abs(floor(strtotime($aff['date_expiration_taxe_voirie'])/ (60*60*24)));
+      //echo " Nbre de Jrs jusqu'a l'exp: ".$z."</br>";  ?>
+      <?php  $date_jour= date('Y/m/d'); ?>
+     
+      <?php $z=abs(floor(strtotime($aff['date_livraison_taxe_voirie'])/ (60*60*24)));
+      $y=abs(floor(strtotime($date_jour)/ (60*60*24)));
+     
+
+   $rest_jours=$x-$y;
+      
+      echo $x-$z .' Jour(s) de validité'.'<br>'; 
+      //echo $z .'<br>'; 
+      //echo $rest_jours .'<br>';
+      ?>  
+
+     <?php
+      if($rest_jours>=0){
+
+        echo $alerte='<strong>'.'<p class="">'."La Taxe Voirie reste avec ". $rest_jours.' Jour(s)'.'</p>'.'</strong>';
+      }
+
+      elseif($rest_jours<0){
+         echo $alerte='<strong>'.'<p class="blue" >'."La Taxe Voirie reste a expirée il y a ".$rest_jours.' Jour(s)'. '</p>'.'<strong>';
+      }
+      ?>
 
    <hr class="two">
       <?php }?>
