@@ -26,7 +26,7 @@
                             </tr>
                             
                             <tr class="gradeU">
-                                <td>Other browsers</td>
+                                <td><a href="?p=apercu_moyen_de_transport">Other browsers</a></td>
                                 <td>All others</td>
                                 <td>-</td>
                                 <td class="center">-</td>
