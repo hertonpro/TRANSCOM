@@ -337,6 +337,11 @@
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <strong><em class="fa fa-warning fa-fw"></em>Alerte 234543</strong> Better check yourself,<a href="#" class="alert-link">Voir les détails</a> you're not looking too good.
                     </div>
+                    <?php
+                        if ($_GET['p']=='apercu_moyen_de_transport') {
+                            include('nav_trans.php');
+                        }
+                    ?>
                 </div>
                 <!-- /.col-lg-12 -->
                 <!-- container-space -->
