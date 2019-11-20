@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  jeu. 14 nov. 2019 à 22:12
+-- Généré le :  mer. 20 nov. 2019 à 15:21
 -- Version du serveur :  10.1.38-MariaDB
 -- Version de PHP :  7.1.27
 
@@ -124,34 +124,6 @@ INSERT INTO `alerte` (`id_alerte`, `type_alerte`, `autre_alerte`, `date_alerte`,
 -- --------------------------------------------------------
 
 --
--- Structure de la table `amende`
---
-
-CREATE TABLE `amende` (
-  `id_amende` int(11) NOT NULL,
-  `nom_amende` varchar(255) NOT NULL,
-  `montant` varchar(255) NOT NULL,
-  `date_amende` date NOT NULL,
-  `etat_amende` varchar(255) NOT NULL,
-  `id_ut_fk` int(11) NOT NULL,
-  `nom_ut_fk` varchar(255) NOT NULL,
-  `id_mt_fk` int(11) NOT NULL,
-  `num_plaque_mt_fk` varchar(255) NOT NULL,
-  `date_enreg_amende` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `amende`
---
-
-INSERT INTO `amende` (`id_amende`, `nom_amende`, `montant`, `date_amende`, `etat_amende`, `id_ut_fk`, `nom_ut_fk`, `id_mt_fk`, `num_plaque_mt_fk`, `date_enreg_amende`) VALUES
-(3, 'taxe_voirie<br>vignette<br>assurence<br>controle_technique', '34', '2019-11-14', '', 2, 'admin2', 1, '1234/22', '2019-11-14 20:58:07'),
-(4, 'taxe_voirie<br>vignette<br>assurence', '', '0000-00-00', 'non_reglÃ©', 2, 'admin2', 1, '1234/22', '2019-11-14 21:05:17'),
-(5, 'assurence<br>controle_technique', '', '0000-00-00', 'non_reglÃ©', 2, 'admin2', 1, '1234/22', '2019-11-14 21:11:19');
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `assurance`
 --
 
@@ -224,6 +196,33 @@ INSERT INTO `conducteur` (`id_cond`, `nom_cond`, `postnom_cond`, `prenom_cond`, 
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `controle_roullage`
+--
+
+CREATE TABLE `controle_roullage` (
+  `id_controle` int(11) NOT NULL,
+  `nom_doc_manquant` varchar(255) NOT NULL,
+  `constant` varchar(255) NOT NULL,
+  `id_ut_fk` int(11) NOT NULL,
+  `nom_ut_fk` varchar(255) NOT NULL,
+  `id_mt_fk` int(11) NOT NULL,
+  `num_plaque_mt_fk` varchar(255) NOT NULL,
+  `date_enreg_controle_roullage` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `controle_roullage`
+--
+
+INSERT INTO `controle_roullage` (`id_controle`, `nom_doc_manquant`, `constant`, `id_ut_fk`, `nom_ut_fk`, `id_mt_fk`, `num_plaque_mt_fk`, `date_enreg_controle_roullage`) VALUES
+(60, ',Taxe voirie,', '', 2, 'admin2', 1, '1234/22', '2019-11-20 09:34:00'),
+(61, ',Taxe voirie,', '', 2, 'admin2', 1, '1234/22', '2019-11-20 09:38:08'),
+(62, ',Taxe voirie,', '', 2, 'admin2', 1, '1234/22', '2019-11-20 10:23:01'),
+(63, ',Taxe voirie,', '', 2, 'admin2', 1, '1234/22', '2019-11-20 10:41:39');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `controle_technique`
 --
 
@@ -288,7 +287,47 @@ INSERT INTO `moyen_de_transport` (`id_mt`, `num_plaque_mt`, `marque_mt`, `model_
 (8, '6e453/23', 'FUSO', '45465', 'vehicule', 2019, '3432', '34565434567', 'DROITE', 'NOIR', '', 1, 'admin', '2019-11-08 13:26:00'),
 (9, '234567654', 'TOYOTA', 'RAV4', 'vehicule', 2019, '234567', '3456765', 'DROITE', 'jaune', 'wordpress.jpg', 1, 'admin', '2019-11-08 13:52:07'),
 (12, '6543', '344444', '', 'vehicule', 0000, '', '', '---Selectionez---', '', 'loc.png', 1, 'admin', '2019-11-10 16:03:30'),
-(14, '65434', 'bodaboda', 'tvs', 'moto', 2019, '56789', '45678', 'AUTRE', '', 'logo.png', 1, 'admin', '2019-11-12 11:01:41');
+(14, '65434', 'bodaboda', 'tvs', 'moto', 2019, '56789', '45678', 'AUTRE', '', 'logo.png', 1, 'admin', '2019-11-12 11:01:41'),
+(16, 'tttttttttttt', 'ttttttttt', 'tttttttttttt', 'vehicule', 2019, '111111111111', '22222222222', 'GAUCHE', 'rrrrrrrrrrr', 'big_image_3.jpg', 1, 'admin', '2019-11-19 07:19:10'),
+(17, 'tttttttttttt', 'ttttttttt', 'tttttttttttt', 'vehicule', 2019, '111111111111', '22222222222', 'GAUCHE', 'rrrrrrrrrrr', 'big_image_3.jpg', 1, 'admin', '2019-11-19 07:22:05');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `note_perception`
+--
+
+CREATE TABLE `note_perception` (
+  `id_note` int(11) NOT NULL,
+  `nom_doc` varchar(255) NOT NULL,
+  `montant` varchar(255) NOT NULL,
+  `date_note` date NOT NULL,
+  `etat_note` varchar(255) NOT NULL,
+  `id_controle_fk` int(11) NOT NULL,
+  `nom_doc_manquant_fk` varchar(255) NOT NULL,
+  `id_ut_fk` int(11) NOT NULL,
+  `nom_ut_fk` varchar(255) NOT NULL,
+  `id_mt_fk` int(11) NOT NULL,
+  `num_plaque_mt_fk` varchar(255) NOT NULL,
+  `date_enreg_note` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `note_perception`
+--
+
+INSERT INTO `note_perception` (`id_note`, `nom_doc`, `montant`, `date_note`, `etat_note`, `id_controle_fk`, `nom_doc_manquant_fk`, `id_ut_fk`, `nom_ut_fk`, `id_mt_fk`, `num_plaque_mt_fk`, `date_enreg_note`) VALUES
+(3, 'taxe_voirie<br>vignette<br>assurence<br>controle_technique', '34', '2019-11-14', '', 0, '', 2, 'admin2', 1, '1234/22', '2019-11-14 20:58:07'),
+(4, 'taxe_voirie<br>vignette<br>assurance', '', '0000-00-00', 'non_reglÃ©', 0, '', 2, 'admin2', 1, '1234/22', '2019-11-20 11:44:03'),
+(5, 'assurence<br>controle_technique', '', '0000-00-00', 'non_reglÃ©', 0, '', 2, 'admin2', 1, '1234/22', '2019-11-14 21:11:19'),
+(6, 'taxe_voirie', '', '2019-11-20', 'non_reglÃ©', 0, '', 2, 'admin2', 1, '1234/22', '2019-11-20 08:20:54'),
+(7, 'taxe_voirie<br>vignette<br>assurance<br>controle_technique<br>permis', '', '0000-00-00', '', 0, '', 2, 'admin2', 1, '1234/22', '2019-11-20 11:43:47'),
+(8, 'taxe_voirie<br>vignette<br>assurance<br>controle_technique<br>permis', '22', '2019-11-20', 'non_reglÃ©', 0, '', 2, 'admin2', 1, '1234/22', '2019-11-20 11:43:55'),
+(9, 'taxe_voirie', '', '2019-11-20', 'non_reglÃ©', 63, '', 2, 'admin2', 1, '1234/22', '2019-11-20 09:59:12'),
+(14, 'taxe_voirie', '', '0000-00-00', 'non_reglÃ©', 63, ',Taxe voirie,', 2, 'admin2', 1, '1234/22', '2019-11-20 10:09:48'),
+(15, '', '', '0000-00-00', 'non_reglÃ©', 63, ',Taxe voirie,', 2, 'admin2', 1, '1234/22', '2019-11-20 10:12:26'),
+(16, '<br>taxe_voirie<br>vignette<br>assurance', '', '2019-11-20', 'non_reglÃ©', 63, ',Taxe voirie,', 2, 'admin2', 1, '1234/22', '2019-11-20 11:44:09'),
+(17, '<br>taxe_voirie<br>vignette<br>assurance<br>controle_technique<br>permis', '', '0000-00-00', 'non_reglÃ©', 63, ',Taxe voirie,', 2, 'admin2', 1, '1234/22', '2019-11-20 11:59:44');
 
 -- --------------------------------------------------------
 
@@ -458,7 +497,8 @@ INSERT INTO `vignette` (`id_vignette`, `reff_vignette`, `date_livraison_vignette
 (3, 'vign2', '2019-11-05', '2019-11-28', '', 1, 'admin', 9, '234567654', '2019-11-10 12:48:36'),
 (4, '', '0000-00-00', '0000-00-00', '', 1, 'admin', 1, '1234/22', '2019-11-10 15:04:27'),
 (5, '', '2019-11-04', '2019-11-24', '', 1, 'admin', 1, '1234/22', '2019-11-10 15:05:14'),
-(6, '', '2019-11-04', '2019-11-04', '', 1, 'admin', 1, '1234/22', '2019-11-10 15:24:30');
+(6, '', '2019-11-04', '2019-11-04', '', 1, 'admin', 1, '1234/22', '2019-11-10 15:24:30'),
+(7, '3232323', '2019-11-13', '2019-11-29', '', 1, 'admin', 1, '1234/22', '2019-11-19 15:05:49');
 
 --
 -- Index pour les tables déchargées
@@ -483,12 +523,6 @@ ALTER TABLE `alerte`
   ADD PRIMARY KEY (`id_alerte`);
 
 --
--- Index pour la table `amende`
---
-ALTER TABLE `amende`
-  ADD PRIMARY KEY (`id_amende`);
-
---
 -- Index pour la table `assurance`
 --
 ALTER TABLE `assurance`
@@ -501,6 +535,12 @@ ALTER TABLE `conducteur`
   ADD PRIMARY KEY (`id_cond`);
 
 --
+-- Index pour la table `controle_roullage`
+--
+ALTER TABLE `controle_roullage`
+  ADD PRIMARY KEY (`id_controle`);
+
+--
 -- Index pour la table `controle_technique`
 --
 ALTER TABLE `controle_technique`
@@ -511,6 +551,12 @@ ALTER TABLE `controle_technique`
 --
 ALTER TABLE `moyen_de_transport`
   ADD PRIMARY KEY (`id_mt`);
+
+--
+-- Index pour la table `note_perception`
+--
+ALTER TABLE `note_perception`
+  ADD PRIMARY KEY (`id_note`);
 
 --
 -- Index pour la table `permis`
@@ -565,12 +611,6 @@ ALTER TABLE `alerte`
   MODIFY `id_alerte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT pour la table `amende`
---
-ALTER TABLE `amende`
-  MODIFY `id_amende` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
 -- AUTO_INCREMENT pour la table `assurance`
 --
 ALTER TABLE `assurance`
@@ -583,6 +623,12 @@ ALTER TABLE `conducteur`
   MODIFY `id_cond` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT pour la table `controle_roullage`
+--
+ALTER TABLE `controle_roullage`
+  MODIFY `id_controle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+
+--
 -- AUTO_INCREMENT pour la table `controle_technique`
 --
 ALTER TABLE `controle_technique`
@@ -592,7 +638,13 @@ ALTER TABLE `controle_technique`
 -- AUTO_INCREMENT pour la table `moyen_de_transport`
 --
 ALTER TABLE `moyen_de_transport`
-  MODIFY `id_mt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_mt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT pour la table `note_perception`
+--
+ALTER TABLE `note_perception`
+  MODIFY `id_note` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT pour la table `permis`
@@ -622,7 +674,7 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT pour la table `vignette`
 --
 ALTER TABLE `vignette`
-  MODIFY `id_vignette` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_vignette` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
