@@ -17,7 +17,7 @@ $res=mysqli_query($conn,$req);
 if(mysqli_num_rows($res)>=1){
 $_SESSION['nom_ut'] =htmlentities ($_POST['nom_ut']);
 
-header('location:?p=dashboard_operateur.php');
+header('location:main.php');
 }
 
 elseif(mysqli_num_rows($res)!==1) {
@@ -27,39 +27,51 @@ elseif(mysqli_num_rows($res)!==1) {
 $res=mysqli_query($conn,$req);
  
 $_SESSION['nom_ut'] =htmlentities ($_POST['nom_ut']);
-header('location:dashboard_roullage.php'); 
+header('location:main.php'); 
 }
 
 }
 
 ?>
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
+<?php
+include('header_css.php');
+?>
+</head>
+<body>
+	
+	
+	<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
+		<div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
+			<form class="login100-form validate-form" method="POST" >
+				<span class="login100-form-title p-b-37">
+					TRANSCOM
+				</span>
 
-  </head>
-  <body>
+				<div class="wrap-input100 validate-input m-b-20" data-validate="Entrer votre nom d'utilisateur">
+					<input class="input100" type="text" id="nom_ut" name="nom_ut" placeholder="ID utilisateur ">
+					<span class="focus-input100"></span>
+				</div>
 
-              <h2 class="mb-4">Connectez-vous</h2>
-              <form method="POST" action="" >
-               
-                    <label for="name">Nom d'utilisateur</label>
-                    <input type="text" id="nom_ut" name="nom_ut" class="form-control py-2">
-           
-                    <label for="name">Mot de passe</label>
-                    <input type="password" name="mdp_ut" id="mdp_ut" class="form-control py-2">
-                 
-                    <input type="submit" value="Connexion" name="submit" class="btn btn-primary px-5 py-2">
-               
-    <br>          
-<a href="saisie_utilisateur.php">creation compte</a>               
+				<div class="wrap-input100 validate-input m-b-25" data-validate = "Entrer votre mot de passe">
+					<input class="input100" type="password" name="mdp_ut" id="mdp_ut" placeholder="password">
+					<span class="focus-input100"></span>
+				</div>
 
- <?php
- //include('footer.php');
- ?>
+				<div class="container-login100-form-btn">
+					<button class="login100-form-btn" type="submit" name="submit" value="Connexion">
+            Connexion
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	
+<?php
+include('footer_css.php');
+?>
 
-
-
-  </body>
+</body>
 </html>
