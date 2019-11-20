@@ -1,3 +1,7 @@
+<?php
+session_start();  
+include('connexion.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -297,7 +301,7 @@
                             </div>
                         </li>
                         <li>
-                            <a href="?p=menu"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="?p=dashboard_operateur"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Statistique<span class="fa arrow"></span></a>
@@ -330,7 +334,6 @@
             <div class="row">
                 <div class="col-lg-12"> <br> <br>
 					<div class="card mb-3" style="max-width: 540px;">
- 
                     </div>
                     <h1 class="page-header">Dashboard</h1>
                     <div class="alert alert-danger alert-dismissible" role="alert">
@@ -340,6 +343,8 @@
                 </div>
                 <!-- /.col-lg-12 -->
                 <!-- container-space -->
+<!-- ===================================auto loader====================================-->
+
                 <?php
                 var_dump($_GET);
                 include('../../../app/Controllers/autoloader.php');            
