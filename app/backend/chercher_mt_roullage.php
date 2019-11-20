@@ -29,7 +29,7 @@ $res=mysqli_query($conn,$req) or  die(mysqli_error());
                  <p class="black">MARQUE: <?php echo ($aff['marque_mt']) ?></p>
                  <p class="black">MODELE: <?php echo ($aff['model_mt']) ?></p>
                 
-                <a href="apercu_moyen_de_transport_roullage.php?id_mt=<?php echo ($aff['id_mt'])?>"><button ><p><strong> Details du moyen de transport </strong></p></button></a>        
+                <a href="controle_roullage.php?id_mt=<?php echo ($aff['id_mt'])?>"><button ><p><strong> Details du moyen de transport </strong></p></button></a>        
 
 
 <?php }?>

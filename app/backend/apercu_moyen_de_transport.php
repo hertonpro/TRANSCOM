@@ -1,14 +1,11 @@
 <?php
 session_start();	
 include('connexion.php');
-
 ?>
 
 <?php
 include('menu_mt.php');
-
 ?>
-
 
 <h5 class="">IDENTITE MOYEN DE TRANSPORT</h5>
               
@@ -44,21 +41,22 @@ $res=mysqli_query($conn,$req) or die(mysqli_error());
 
                COULEUR:  <?php echo ($aff['couleur_mt'])?><br>
             
-
+<a href="details_moyen_de_transport.php?id_mt=<?php echo ($aff['id_mt']) ?>"><button class="btn btn-warning btn-sm" ><strong>Voir en detail:</strong> </button></a>
+                
                 <hr class="two">
 
             <?php }?>
 
 
 <!-- --------------------------------------------------------------------------- -->
-
+<a href="details_moyen_de_transport.php>Details"></a>
 
 
        <h2 class="mb-4">APERCU GENERAL NOM PROPRIETAIRE</h2>
 
       <hr class="two">
       <?php
-       $req=("SELECT * FROM affectation_pro, proprietaire ,moyen_de_transport WHERE proprietaire.id_pro = affectation_pro.id_pro_affect AND moyen_de_transport.id_mt = affectation_pro.id_mt_affect AND  id_mt_affect='".$_SESSION['id_mt']."' ORDER BY date_enreg_affect_pro DESC ");
+       $req=("SELECT * FROM affectation_pro, proprietaire ,moyen_de_transport WHERE proprietaire.id_pro = affectation_pro.id_pro_affect AND moyen_de_transport.id_mt = affectation_pro.id_mt_affect AND  id_mt_affect='".$_SESSION['id_mt']."' ORDER BY date_enreg_affect_pro DESC LIMIT 1");
         $res=mysqli_query($conn,$req) or die(mysqli_error());
       ?>
 
@@ -77,7 +75,7 @@ $res=mysqli_query($conn,$req) or die(mysqli_error());
 <h2 class="mb-4">APERCU GENERAL NOM CHAUFFEUR</h2>
 
 <?php
-       $req=("SELECT * FROM affectation_conducteur, conducteur ,moyen_de_transport WHERE conducteur.id_cond = affectation_conducteur.id_cond_affect AND moyen_de_transport.id_mt = affectation_conducteur.id_mt_affect AND  id_mt_affect='".$_SESSION['id_mt']."' ORDER BY date_enreg_affect_cond DESC ");
+       $req=("SELECT * FROM affectation_conducteur, conducteur ,moyen_de_transport WHERE conducteur.id_cond = affectation_conducteur.id_cond_affect AND moyen_de_transport.id_mt = affectation_conducteur.id_mt_affect AND  id_mt_affect='".$_SESSION['id_mt']."' ORDER BY date_enreg_affect_cond DESC LIMIT 1");
         $res=mysqli_query($conn,$req) or die(mysqli_error());
       ?>
 
@@ -92,6 +90,7 @@ $res=mysqli_query($conn,$req) or die(mysqli_error());
 
       <hr>
    <?php }?>
+
 
 
 <?php

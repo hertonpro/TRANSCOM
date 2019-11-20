@@ -49,7 +49,7 @@ mysqli_query($conn,$req1)  or die(mysqli_error()) ;
 
 
   <?php 
-  include ('menu.php');
+  include ('menu_mt.php');
   ?><br>
 <body>
  <a href="deconnexion.php">Deconnexion</a><br>
@@ -115,7 +115,7 @@ $res2=mysqli_query($conn,$req2) or die(mysqli_error());
 	<input type="submit" name="submit" value="Enregistrer">
 </form>
 
-       <h2 class="mb-4">APERCU GENERAL CONDUCTEUR</h2>
+       <h2 class="mb-4">APERCU GENERAL PROPRIETE</h2>
 
       <hr class="two">
       <?php

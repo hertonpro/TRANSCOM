@@ -92,12 +92,15 @@ $res2=mysqli_query($conn,$req2) or die(mysqli_error());
 ?>
  
  
-	<input type="submit" name="submit" value="Enregistrer">
+<input type="submit" name="submit" value="Enregistrer">
 </form>
+
+<!-- ============================================================================ -->
 
        <h2 class="mb-4">APERCU GENERAL PERMIS</h2>
 
-      <hr class="two">
+      <hr>
+
       <?php
       $req=("SELECT * FROM permis WHERE id_pro_cond_fk='".$_SESSION['id_pro']."' ORDER BY date_enreg_permis DESC ");
       $res=mysqli_query($conn,$req) or die(mysqli_error());

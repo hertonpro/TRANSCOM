@@ -1,26 +1,57 @@
 <?php
 session_start();	
 include('connexion.php');
+?>
+
+<!-- ==================recuperation et execution controle au moyen de transport============== -->
+<?php
+$id_mt=htmlspecialchars($_GET['id_mt'])  ;
+
+$_SESSION['id_mt']=htmlentities ($_GET['id_mt']);
+//echo $_SESSION['id_mt'];
+
+if(isset($_POST['submit']))
+{
+
+$nom_doc_manquant=implode(',',$_POST['nom_doc_manquant']);
+
+$constant="vide";
+$id_ut_fk=$_POST['id_ut_fk'];
+$nom_ut_fk=$_POST['nom_ut_fk'];
+$id_mt_fk=$_POST['id_mt_fk'];
+$num_plaque_mt_fk=$_POST['num_plaque_mt_fk'];
+
+$req1="INSERT INTO controle_roullage (nom_doc_manquant,constant,id_ut_fk,nom_ut_fk,id_mt_fk,num_plaque_mt_fk)
+
+VALUES ('$nom_doc_manquant','','$id_ut_fk','$nom_ut_fk','$id_mt_fk','$num_plaque_mt_fk')";
+
+mysqli_query($conn,$req1)  or die(mysqli_error()) ;
+//header('location: redirection_apercu_mt.php' );
+
+}
+
+
 
 ?>
 
 <?php
 include('menu_roullage.php');
-
 ?>
+<!-- ================recuperation et creation session controle roullage================ -->
+
+<br>
 
 
 <h5 class="">IDENTITE MOYEN DE TRANSPORT</h5>
               
 <?php
-$id_mt=htmlspecialchars($_GET['id_mt'])  ;
+$id_mt=htmlspecialchars($_GET['id_mt']);
 
 $_SESSION['id_mt']=htmlentities ($_GET['id_mt']);
 //echo $_SESSION['id_fonct'];
 
 $req=("SELECT * FROM moyen_de_transport WHERE id_mt='".$_SESSION['id_mt']."' ");
 $res=mysqli_query($conn,$req) or die(mysqli_error());
-
 ?>
               <?php while ($aff=mysqli_fetch_assoc($res)){?>
               
@@ -44,7 +75,7 @@ $res=mysqli_query($conn,$req) or die(mysqli_error());
 
                COULEUR:  <?php echo ($aff['couleur_mt'])?><br>
             
-<a href="details_moyen_de_transport.php?id_mt=<?php echo ($aff['id_mt']) ?>"><button class="btn btn-warning btn-sm" ><strong>Voir en detail:</strong> </button></a>
+<!-- <a href="details_moyen_de_transport.php?id_mt=<?php echo ($aff['id_mt']) ?>"><button class="btn btn-warning btn-sm" ><strong>Voir en detail:</strong> </button></a> -->
                 
                 <hr class="two">
 
@@ -67,8 +98,8 @@ $res=mysqli_query($conn,$req) or die(mysqli_error());
        Postnom proprietaire: <?php echo ($aff['postnom_pro'])?><br>
        Prenom: <?php echo ($aff['prenom_pro'])?><br>
 
- <label>Consulter Vehicule:</label>
- <a href="apercu_proprietaire.php?id_pro=<?php echo ($aff['id_pro']) ?>"><button class="btn btn-warning btn-sm" ><strong>Consulter Proprietaire:</strong> </button></a>
+ <!--<label>Consulter Vehicule:</label>
+  <a href="apercu_proprietaire.php?id_pro=<?php echo ($aff['id_pro']) ?>"><button class="btn btn-warning btn-sm" ><strong>Consulter Proprietaire:</strong> </button></a> -->
 
 
       <hr>
@@ -86,8 +117,8 @@ $res=mysqli_query($conn,$req) or die(mysqli_error());
        Postnom proprietaire: <?php echo ($aff['postnom_cond'])?><br>
        Prenom: <?php echo ($aff['prenom_cond'])?><br>
 
- <label>Consulter Vehicule:</label>
- <a href="apercu_conducteur.php?id_cond=<?php echo ($aff['id_cond']) ?>"><button class="btn btn-warning btn-sm" ><strong>Consulter Conducteur:</strong> </button></a>
+<!--  <label>Consulter Vehicule:</label>
+ <a href="apercu_conducteur.php?id_cond=<?php echo ($aff['id_cond']) ?>"><button class="btn btn-warning btn-sm" ><strong>Consulter Conducteur:</strong> </button></a> -->
 
 
       <hr>
