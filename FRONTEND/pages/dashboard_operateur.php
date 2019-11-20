@@ -123,7 +123,7 @@ nom de l'operateur est: <?php echo ($aff['nom_ut'])?></h4><br>
                                     <i class="fa fa-user-plus fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">Statistique</div>
+                                    <h2>Statistique et Rapport</h2>
                                     <div></div>
                                 </div>
                             </div>

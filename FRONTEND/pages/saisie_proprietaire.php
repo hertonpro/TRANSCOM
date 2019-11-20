@@ -1,12 +1,20 @@
 <?php
 //session_start();  
 include('connexion.php');
+
+$id_mt=htmlspecialchars($_GET['id_mt'])  ;
+
+$_SESSION['id_mt']=htmlentities ($_GET['id_mt']);
+//echo $_SESSION['id_mt'];
 ?>
 
 
 <div class="row">
     <div class="col-lg-6">
         <div class="panel panel-default">
+  <?php 
+  include ('menu_pro.php');
+  ?><br>
             <div class="panel-heading">fiche d'identification Proprietaire</div>
             <!-- /.panel-heading -->
             <div class="panel-body">

@@ -109,16 +109,14 @@ $res=mysqli_query($conn,$req) or die(mysqli_error());
             <div class="panel-heading">Proprietaire</div>
             <!-- /.panel-heading -->
             <div class="panel-body">
-                <p> <strong>Proprietair: </strong><?php echo ($aff['nom_pro'])?></p>
-                <p> <strong>Dâte d'apropriation : </strong><?php echo ($aff['postnom_pro'])?></p>
-                <p> <strong>Marque: </strong><?php echo ($aff['prenom_pro'])?></p>
+                <p> <strong>Nom: </strong><?php echo ($aff['nom_pro'])?></p>
+                <p> <strong>Postnom : </strong><?php echo ($aff['postnom_pro'])?></p>
+                <p> <strong>Prenom: </strong><?php echo ($aff['prenom_pro'])?></p>
             
             </div>
       <?php }?>      
 
 <!-- =======================================Apercu Conducteur============================= -->
-
- <div class="panel-heading">Conducteur</div>
 
 <?php
            $req=("SELECT * FROM affectation_conducteur, conducteur ,moyen_de_transport WHERE conducteur.id_cond = affectation_conducteur.id_cond_affect AND moyen_de_transport.id_mt = affectation_conducteur.id_mt_affect AND  id_mt_affect='".$_SESSION['id_mt']."' ORDER BY date_enreg_affect_cond DESC LIMIT 1");
@@ -129,12 +127,12 @@ $res=mysqli_query($conn,$req) or die(mysqli_error());
 <?php while ($aff=mysqli_fetch_assoc($res)){?>
 
             <br>
-            <div class="panel-heading">Proprietaire <a class="text-danger"></a></div>
+            <div class="panel-heading">Conducteur </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
-                <p> <strong>Proprietair: </strong><?php echo ($aff['nom_cond'])?></p>
-                <p> <strong>Dâte d'apropriation : </strong><?php echo ($aff['postnom_cond'])?></p>
-                <p> <strong>Marque: </strong><?php echo ($aff['prenom_cond'])?></p>
+                <p> <strong>Nom: </strong><?php echo ($aff['nom_cond'])?></p>
+                <p> <strong>Postnom: </strong><?php echo ($aff['postnom_cond'])?></p>
+                <p> <strong>Prenom: </strong><?php echo ($aff['prenom_cond'])?></p>
             
             </div>
       <?php }?> 
