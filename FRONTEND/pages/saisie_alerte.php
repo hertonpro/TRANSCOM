@@ -1,8 +1,12 @@
 <?php
-session_start();
+//session_start();
 include('connexion.php');
 $id;
 
+$id_mt=htmlspecialchars($_GET['id_mt'])  ;
+
+$_SESSION['id_mt']=htmlentities ($_GET['id_mt']);
+//echo $_SESSION['id_mt'];
 
 echo $_SESSION['nom_ut'];
 
@@ -33,19 +37,11 @@ mysqli_query($conn,$req1)  or die(mysqli_error()) ;
 
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-   <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-	<title></title>
 
     <?php 
   include ('menu_mt.php');
-  ?><br>
+  ?>
+
 </head>
 <body>
  <a href="deconnexion.php">Deconnexion</a><br>
