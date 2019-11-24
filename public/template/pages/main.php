@@ -256,7 +256,7 @@ include('connexion.php');
 							<div class="card text-center" style="width: 18rem;">
 								<img src="../images/user.jpg" class="card-img img-circle " alt="..." width="170px" >
 								<div class="card-body">
-									<h3 class="card-title">Admin Nom</h3>
+									<h3 class="card-title"><?php echo $_SESSION['nom_ut']; ?></h3>
 									<p class="card-text">Operateur Bukavu</p>
 									<p class="card-text"><small class="text-muted">mat: 22541-BKV</small></p>
 								</div>
@@ -267,7 +267,7 @@ include('connexion.php');
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Deconnexion</a>
+                        <li><a href="deconnexion.php"><i class="fa fa-sign-out fa-fw"></i> Deconnexion</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -294,7 +294,7 @@ include('connexion.php');
                             <div class="text-center">
                                 <img src="../images/user.jpg" class="img-circle mx-auto d-block img-fluid" alt="..." width="200px" >
                                 <div class="card-body">
-                                        <h3 class="card-title">Admin Nom</h3>
+                                        <h3 class="card-title"><?php echo $_SESSION['nom_ut']; ?></h3>
                                         <p class="card-title text-danger">mat: 22541-BKV</p>
                                         
                                 </div>
@@ -336,17 +336,13 @@ include('connexion.php');
 					<div class="card mb-3" style="max-width: 540px;">
                     </div>
                     <h1 class="page-header">Dashboard</h1>
-                    <div class="alert alert-danger alert-dismissible" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <strong><em class="fa fa-warning fa-fw"></em>Alerte 234543</strong> Better check yourself,<a href="#" class="alert-link">Voir les détails</a> you're not looking too good.
-                    </div>
+                        <!-- alert div pour ls notification des alerts  -->
                 </div>
                 <!-- /.col-lg-12 -->
                 <!-- container-space -->
-<!-- ===================================auto loader====================================-->
+<!-- =================================auto loader====================================-->
 
                 <?php
-                var_dump($_GET);
                 include('../../../app/Controllers/autoloader.php');            
                 ?>
             </div>

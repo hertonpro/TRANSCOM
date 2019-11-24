@@ -2,14 +2,62 @@
 //session_start();    
 include('connexion.php');
 ?>
-
-<!-- ==============================Apercu moyen de transport================================ -->
+<!-- =================execution de saisie proprietaire -->
 
 <?php
 $id_mt=htmlspecialchars($_GET['id_mt'])  ;
 
 $_SESSION['id_mt']=htmlentities ($_GET['id_mt']);
-//echo $_SESSION['id_fonct'];
+
+if(isset($_POST['submit']))
+{
+
+$scan_identite_pro=$_FILES['scan_identite_pro'] ['name'];
+$file_tmp_name=$_FILES['scan_identite_pro'] ['tmp_name'];
+move_uploaded_file($file_tmp_name,"../imgs/$scan_identite_pro");
+
+$photo_pro=$_FILES['photo_pro'] ['name'];
+$file_tmp_name=$_FILES['photo_pro'] ['tmp_name'];
+move_uploaded_file($file_tmp_name,"../imgs/$photo_pro");
+
+$nom_pro=$_POST['nom_pro'];
+$postnom_pro=$_POST['postnom_pro'];
+$prenom_pro=$_POST['prenom_pro'];
+$sexe_pro=$_POST['sexe_pro'];
+$date_naiss_pro=$_POST['date_naiss_pro'];
+$lieu_naiss_pro=$_POST['lieu_naiss_pro'];
+$province_pro=$_POST['province_pro'];
+$ville_pro=$_POST['ville_pro'];
+$commune_pro=$_POST['commune_pro'];
+$quartier_pro=$_POST['quartier_pro'];
+$avennue_pro=$_POST['avennue_pro'];
+$num_domicile_pro=$_POST['num_domicile_pro'];
+$tel1_pro=$_POST['tel1_pro'];
+$tel2_pro=$_POST['tel2_pro'];
+$email_pro=$_POST['email_pro'];
+
+$id_ut_fk=$_POST['id_ut_fk'];
+$nom_ut_fk=$_POST['nom_ut_fk'];
+$id_mt_fk=$_POST['id_mt_fk'];
+$num_plaque_mt_fk=$_POST['num_plaque_mt_fk'];
+
+$req1="INSERT INTO proprietaire (nom_pro,postnom_pro,prenom_pro,sexe_pro,date_naiss_pro,lieu_naiss_pro,province_pro,ville_pro,commune_pro,quartier_pro,avennue_pro,num_domicile_pro,tel1_pro,tel2_pro,email_pro,scan_identite_pro,photo_pro,id_ut_fk,nom_ut_fk,id_mt_fk,num_plaque_mt_fk)
+
+VALUES ('$nom_pro','$postnom_pro','$prenom_pro','$sexe_pro','$date_naiss_pro','$lieu_naiss_pro','$province_pro','$ville_pro','$commune_pro','$quartier_pro','$avennue_pro','$num_domicile_pro','$tel1_pro','$tel2_pro','$email_pro','$scan_identite_pro','$photo_pro','$id_ut_fk','$nom_ut_fk','$id_mt_fk','$num_plaque_mt_fk')";
+
+mysqli_query($conn,$req1)  or die(mysqli_error()) ;
+
+//header('location: apercu_moyen_de_transport.php ');
+}
+
+?>
+
+
+
+<!-- ============================Apercu moyen de transport================================ -->
+
+<?php
+
 
 $req=("SELECT * FROM moyen_de_transport WHERE id_mt='".$_SESSION['id_mt']."'");
 $res=mysqli_query($conn,$req) or die(mysqli_error());
@@ -18,9 +66,13 @@ $res=mysqli_query($conn,$req) or die(mysqli_error());
   <?php while ($aff=mysqli_fetch_assoc($res)){?>
 
 <div class="row">
+    <div class="col-lg-12">
+        <?php 
+            include ('menu_mt.php');
+        ?>
+    </div>
     <div class="col-lg-6">
     <div class="page-header">
-
         <h4> MOYEN DE TRANSPORT <strong><?php echo ($aff['id_mt'])?></strong></h4>
     </div>
         <div class="panel panel-default">
@@ -53,16 +105,14 @@ $res=mysqli_query($conn,$req) or die(mysqli_error());
             <div class="panel-heading">Proprietaire</div>
             <!-- /.panel-heading -->
             <div class="panel-body">
-                <p> <strong>Proprietair: </strong><?php echo ($aff['nom_pro'])?></p>
-                <p> <strong>Dâte d'apropriation : </strong><?php echo ($aff['postnom_pro'])?></p>
-                <p> <strong>Marque: </strong><?php echo ($aff['prenom_pro'])?></p>
+                <p> <strong>Nom: </strong><?php echo ($aff['nom_pro'])?></p>
+                <p> <strong>Postnom : </strong><?php echo ($aff['postnom_pro'])?></p>
+                <p> <strong>Prenom: </strong><?php echo ($aff['prenom_pro'])?></p>
             
             </div>
       <?php }?>      
 
 <!-- =======================================Apercu Conducteur============================= -->
-
- <div class="panel-heading">Conducteur</div>
 
 <?php
            $req=("SELECT * FROM affectation_conducteur, conducteur ,moyen_de_transport WHERE conducteur.id_cond = affectation_conducteur.id_cond_affect AND moyen_de_transport.id_mt = affectation_conducteur.id_mt_affect AND  id_mt_affect='".$_SESSION['id_mt']."' ORDER BY date_enreg_affect_cond DESC LIMIT 1");
@@ -73,12 +123,12 @@ $res=mysqli_query($conn,$req) or die(mysqli_error());
 <?php while ($aff=mysqli_fetch_assoc($res)){?>
 
             <br>
-            <div class="panel-heading">Proprietaire <a class="text-danger"></a></div>
+            <div class="panel-heading">Conducteur </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
-                <p> <strong>Proprietair: </strong><?php echo ($aff['nom_cond'])?></p>
-                <p> <strong>Dâte d'apropriation : </strong><?php echo ($aff['postnom_cond'])?></p>
-                <p> <strong>Marque: </strong><?php echo ($aff['prenom_cond'])?></p>
+                <p> <strong>Nom: </strong><?php echo ($aff['nom_cond'])?></p>
+                <p> <strong>Postnom: </strong><?php echo ($aff['postnom_cond'])?></p>
+                <p> <strong>Prenom: </strong><?php echo ($aff['prenom_cond'])?></p>
             
             </div>
       <?php }?> 

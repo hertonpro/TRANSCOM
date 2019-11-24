@@ -78,25 +78,24 @@ mysqli_query($conn,$req1)  or die(mysqli_error()) ;
                             </select>
                           </div>
                             <div class="form-group">Couleur 
-                              <input type="text" name="couleur_mt" class="form-control" placeholder="Couleur">
+                              <input type="text" name="couleur_mt" class="form-control" placeholder="Couleur" required="">
                             </div>
                             <div class="form-group">Image 
                               <input type="file" name="image_mt" class="form-control" placeholder="Image">
                             </div>
 
-    <!-- =============Recuperation de l'ID de l'operateur=========== -->
+                              <!-- =============Recuperation de l'ID de l'operateur=========== -->
+                              <?php
+                                $req2=("SELECT * FROM utilisateur WHERE nom_ut='".$_SESSION['nom_ut']."'  ");
+                                $res2=mysqli_query($conn,$req2) or die(mysqli_error());
+                              ?>
 
-        <?php
-        $req2=("SELECT * FROM utilisateur WHERE nom_ut='".$_SESSION['nom_ut']."'  ");
-        $res2=mysqli_query($conn,$req2) or die(mysqli_error());
-        ?>
-
-         <?php while ($aff2=mysqli_fetch_assoc($res2)){?>
-                
-        <input class="text" type="hidde" name="id_ut_fk" value="<?php echo ($aff2['id_ut'])?>">
-        <input class="text" type="hidde" name="nom_ut_fk" value="<?php echo ($aff2['nom_ut'])?>">
-                      
-        <?php }?>
+                              <?php while ($aff2=mysqli_fetch_assoc($res2)){?>
+                                      
+                              <input class="text" type="hidden" name="id_ut_fk" value="<?php echo ($aff2['id_ut'])?>">
+                              <input class="text" type="hidden" name="nom_ut_fk" value="<?php echo ($aff2['nom_ut'])?>">
+                                            
+                              <?php }?>
 
                             <button type="submit" name="submit" class="btn btn-primary">Enregistrer</button>
                         </form>
@@ -107,54 +106,36 @@ mysqli_query($conn,$req1)  or die(mysqli_error()) ;
     <div class="col-lg-6">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Images de l'automobile 
+              Enregistrement moyen de transport   
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
-                <h5 class="header">visualiser image</h5>
                 <div class="row">
 
             <div class="col-lg-12">
-            <?php
-//$id_div=$_GET['id_division_fk'];
+              <?php
+                //$id_div=$_GET['id_division_fk'];
 
-//$_SESSION['id_div'] =$id_div;
-//echo $_SESSION['id_div'];
+                //$_SESSION['id_div'] =$id_div;
+                //echo $_SESSION['id_div'];
 
-$req=("SELECT * FROM moyen_de_transport ORDER BY date_enreg_mt DESC limit 1");
-$res=mysqli_query($conn,$req) or die(mysqli_error());
-?>
-                     VEHICULE ENREGISTRE <br><br>
+                $req=("SELECT * FROM moyen_de_transport ORDER BY date_enreg_mt DESC limit 1");
+                $res=mysqli_query($conn,$req) or die(mysqli_error());
+              ?>
+              <?php while ($aff=mysqli_fetch_assoc($res)){?>
+                <div class="alert alert-success" role="alert">
+                  <h2 class="alert-heading">Enregistré !</h2>
+                  <p>Le money de transport <strong><?php echo ($aff['id_mt'])?></strong> a été enregistré avec succès, pour poursuivre les processus d’identification du moyen de transport cliquez sur poursuivre.     </p>
+                  <hr>
+                  <p class="mb-0"><a href="?p=apercu_moyen_de_transport&&id_mt=<?php echo ($aff['id_mt']) ?>"><button type="submit" name="Poursuivre" class="btn btn-primary">Poursuivre</button></a></p>
+                </div>
+                <p> <strong>ID: </strong><?php echo ($aff['id_mt'])?></p>
+                <p> <strong>NUMERO PLAQUE: </strong><?php echo ($aff['num_plaque_mt'])?></p>
+                <p> <strong>MARQUE: </strong><?php echo ($aff['marque_mt'])?></p>
+                <p> <strong>MODELE: </strong><?php echo ($aff['model_mt'])?></p>
 
-                     <table border="1px">
-                                    <thead>
-                                        <tr>
-                                           
-                                            <th>ID</th>
-                                            <th>NUMERO PLAQUE</th>
-                                            <th>MARQUE</th>
-                                            <th>MODELE</th>
-                                            <th>IMAGE</th>
-                                            
-
-                                        </tr>
-                                        
-                                    </thead>
-                                    <?php while ($aff=mysqli_fetch_assoc($res)){?>
-                                    
-                                        <tr>
-                                            
-                                            <td><?php echo ($aff['id_mt'])?></td>
-                                            <td><?php echo ($aff['num_plaque_mt'])?></td>
-                                            <td><?php echo ($aff['marque_mt'])?></td>
-                                            <td width="10"><?php echo ($aff['model_mt'])?></td>
-                                            <td width="10"><img height="40" width="40" class="rounded-circle" src=" ../imgs/<?php echo ($aff['image_mt']) ?>"/></td>
-
-                                            <td><a href="?p=apercu_moyen_de_transport&&id_mt=<?php echo ($aff['id_mt']) ?>">Apercu</a></td>
-
-                                        </tr>
-                                    <?php }?>
-                                </table>
+                <img src="../imgs/<?php echo ($aff['image_mt']) ?>" alt="..." class="img-thumbnail">
+              <?php }?>
     
             </div>
         </div>

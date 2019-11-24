@@ -9,12 +9,6 @@ $req=("SELECT * FROM utilisateur WHERE nom_ut='".$_SESSION['nom_ut']."'  ");
 $res=mysqli_query($conn,$req) or die(mysqli_error());
 ?>
 
-<?php while ($aff=mysqli_fetch_assoc($res)){?>
-
-nom de l'operateur est: <?php echo ($aff['nom_ut'])?></h4><br>
-
-<?php }?>
-
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-3 col-md-6">
@@ -25,21 +19,29 @@ nom de l'operateur est: <?php echo ($aff['nom_ut'])?></h4><br>
                                     <i class="fa fa-car fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">MT</div>
-                                    <div>22546</div>
+                                    <h2>Moyen de Transport</h2>
+                                    <div>
+                                        <?php
+                                        $sql="SELECT count(id_mt) AS total FROM moyen_de_transport ";
+                                    $result=mysqli_query($conn,$sql);
+                                    $values=mysqli_fetch_assoc($result);
+                                    $num_rows=$values['total'];
+                                    echo $num_rows;
+                                    ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <a href="?p=liste_mt">
                             <div class="panel-footer">
-                                <span class="pull-left">Voir les détails</span>
+                                <span class="pull-left">Liste MT</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
                         </a>
                         <a href="?p=saisie_transport_terrestre">
                             <div class="panel-footer">
-                                <span class="pull-left">Saisi MT</span>
+                                <span class="pull-left">Saisie MT</span>
                                 <span class="pull-right"><i class="fa fa-edit"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -51,17 +53,25 @@ nom de l'operateur est: <?php echo ($aff['nom_ut'])?></h4><br>
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-user fa-5x"></i>
+                                    <i class="fa fa-user fa-3x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">Proprieteur</div>
-                                    <div>45514</div>
+                                    <h2>Liste Proprietaire</h2>
+                                    <div>
+                                        <?php
+                                    $sql="SELECT count(id_pro) AS total FROM proprietaire";
+                                    $result=mysqli_query($conn,$sql);
+                                    $values=mysqli_fetch_assoc($result);
+                                    $num_rows=$values['total'];
+                                    echo $num_rows;
+                                    ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <a href="?p=saisie_proprietaire">
+                        <a href="?p=liste_proprietaire">
                             <div class="panel-footer">
-                                <span class="pull-left">Voir les détails</span>
+                                <span class="pull-left">Liste proprietaires</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -76,12 +86,21 @@ nom de l'operateur est: <?php echo ($aff['nom_ut'])?></h4><br>
                                     <i class="fa fa-user-secret fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">Roulage</div>
-                                    <div> 562</div>
+                                    <h2>Liste Conducteurs</h2>
+                                    <div>
+                                        <?php
+                                    $sql="SELECT count(id_cond) AS total FROM conducteur";
+                                    $result=mysqli_query($conn,$sql);
+                                    $values=mysqli_fetch_assoc($result);
+                                    $num_rows=$values['total'];
+                                    echo $num_rows;
+                                    ?>
+                                        
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="?p=liste_conducteur">
                             <div class="panel-footer">
                                 <span class="pull-left">Voir les détails</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -98,12 +117,12 @@ nom de l'operateur est: <?php echo ($aff['nom_ut'])?></h4><br>
                                     <i class="fa fa-user-plus fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">Chauffeur</div>
-                                    <div>2512</div>
+                                    <h2>Statistique et Rapport</h2>
+                                    <div></div>
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="?p=statistique">
                             <div class="panel-footer">
                                 <span class="pull-left">Voir les détails</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

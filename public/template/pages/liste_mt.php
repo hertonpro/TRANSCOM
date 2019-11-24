@@ -27,7 +27,6 @@ $res=mysqli_query($conn,$req) or die(mysqli_error());
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Image</th>
                                 <th>Numéro Plaque</th>
                                 <th>Marque</th>
                                 <th>Modele</th>
@@ -38,7 +37,7 @@ $res=mysqli_query($conn,$req) or die(mysqli_error());
                             <tr class="odd gradeX">
                         <?php while ($aff=mysqli_fetch_assoc($res)){?>
                                             <td><a href="?p=apercu_moyen_de_transport&&id_mt=<?php echo ($aff['id_mt']) ?>"><?php echo ($aff['id_mt'])?></a></td>
-                                            <td width="10"><a href="?p=apercu_moyen_de_transport&&id_mt=<?php echo ($aff['id_mt']) ?>"><img height="40" width="40" class="rounded-circle" src=" ../imgs/<?php echo ($aff['image_mt']) ?>"/></a></td>
+                                            
                                             <td><a href="?p=apercu_moyen_de_transport&&id_mt=<?php echo ($aff['id_mt']) ?>"><?php echo ($aff['num_plaque_mt'])?></a></td>
                                             <td><?php echo ($aff['marque_mt'])?></td>
                                             <td width="10"><?php echo ($aff['model_mt'])?></td>           
