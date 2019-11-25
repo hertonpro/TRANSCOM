@@ -18,7 +18,7 @@ $_SESSION['id_mt']=htmlentities ($_GET['id_mt']);
     <div class="col-lg-6">
         <div class="page-header">
             <h4>PROPRIETAIRE MOYEN DE TRANSPORT <strong><?php echo ($_GET['id_mt'])?></strong></h4>
-            <div class="input-group custom-search-form">
+                            <div class="input-group custom-search-form">
                                 <input type="text" class="form-control" placeholder="Search...">
                                 <span class="input-group-btn">
                                 <button class="btn btn-default" type="button">
@@ -42,15 +42,16 @@ $_SESSION['id_mt']=htmlentities ($_GET['id_mt']);
                               <label>Prenom </label>
                               <input class="form-control" placeholder="Prenom" name="prenom_pro">
                             </div>
-							<label>Sexe</label>
-                                <label class="form-group">
-                                    <select name="sexe_pro" required="">
-                                        <option value="" selected="" >---Selectionnez</option>
-                                        <option value="MASCULIN">MASCULIN</option>
-                                        <option value="FEMININ">FEMININ</option>
-                                    </select>
-                                </label>
-                                
+                            <div class="form-group">
+                                <label>Sexe</label>
+                                    <label class="form-group">
+                                        <select name="sexe_pro" required="">
+                                            <option value="" selected="" >---Selectionnez</option>
+                                            <option value="MASCULIN">MASCULIN</option>
+                                            <option value="FEMININ">FEMININ</option>
+                                        </select>
+                                    </label>
+                            </div>    
 							<div class="form-group">
                                 <label>Date de naissance</label>
                                 <input type="date" class="form-control" name="date_naiss_pro">
