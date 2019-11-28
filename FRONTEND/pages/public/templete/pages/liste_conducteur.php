@@ -46,11 +46,11 @@ $res=mysqli_query($conn,$req) or die(mysqli_error());
                               
                                             <td><a href="?p=apercu_conducteur&&id_cond=<?php echo ($aff['id_cond']) ?>"><?php echo ($aff['id_cond'])?></a></td>
 
-                                            <td width="10"><a href="?p=apercu_conducteur&&id_mt=<?php echo ($aff['id_cond']) ?>"><img height="40" width="40" class="rounded-circle" src=" ../imgs/<?php echo ($aff['photo_cond']) ?>"/></a></td>
+                                            <td width="10"><a href="?p=apercu_conducteur&&id_cond=<?php echo ($aff['id_cond']) ?>"><img height="40" width="40" class="rounded-circle" src=" ../imgs/<?php echo ($aff['photo_cond']) ?>"/></a></td>
                                             
                                             <td><a href="?p=apercu_conducteur&&id_cond=<?php echo ($aff['id_cond']) ?>"> <?php echo ($aff['nom_cond'])?></a></td>
 
-                                            <td><a href="?p=apercu_conducteur&&id_con=<?php echo ($aff['id_cond']) ?>"> <?php echo ($aff['photo_cond'])?></a></td>
+                                            <td><a href="?p=apercu_conducteur&&id_cond=<?php echo ($aff['id_cond']) ?>"> <?php echo ($aff['postnom_cond'])?></a></td>
                             </tr>
                         <?php }?>
 

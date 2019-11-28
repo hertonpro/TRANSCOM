@@ -41,6 +41,9 @@ mysqli_query($conn,$req1)  or die(mysqli_error()) ;
 
 <div class="row">
   <h3>SAISIE ALERTE</h3>
+     <?php 
+        include ('menu_mt.php');
+      ?><br>
     <div class="col-lg-12">
       
       <br>

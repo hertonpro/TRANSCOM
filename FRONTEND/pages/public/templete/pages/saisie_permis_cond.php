@@ -3,8 +3,8 @@
   include('connexion.php');
   $alerte;
 
-  $id_mt=htmlspecialchars($_GET['id_mt'])  ;
-  $_SESSION['id_mt']=htmlentities ($_GET['id_mt']);
+  //$id_mt=htmlspecialchars($_GET['id_mt'])  ;
+  //$_SESSION['id_mt']=htmlentities ($_GET['id_mt']);
 
 
 $id_cond=htmlspecialchars($_GET['id_cond'])  ;
@@ -22,7 +22,7 @@ $_SESSION['id_cond']=htmlentities ($_GET['id_cond']);
     $scan_permis=$_FILES['scan_permis'] ['name'];
     $file_tmp_name=$_FILES['scan_permis'] ['tmp_name'];
 
-    move_uploaded_file($file_tmp_name,"./imgs/$scan_permis");
+    move_uploaded_file($file_tmp_name,"../imgs/$scan_permis");
 
     $type_permis=$_POST['type_permis'];
     $date_livraison_permis=$_POST['date_livraison_permis'];
@@ -49,7 +49,11 @@ $_SESSION['id_cond']=htmlentities ($_GET['id_cond']);
 
 <div class="row">
    <h3>SAISIE PERMIS CONDUCTEUR</h3>
+
     <div class="col-lg-6">
+<?php 
+include ('menu_cond.php');
+?>
         <div class="panel panel-default">
           <div class="panel-heading">Saisie permis</div>
           <!-- /.panel-heading -->
@@ -107,11 +111,10 @@ $_SESSION['id_cond']=htmlentities ($_GET['id_cond']);
     </div>
     <div class="col-lg-6">
       <div class="panel panel-default">
-        <div class="panel-heading">Apercy general permis</div>
+        <div class="panel-heading">Apercu general permis</div>
           <!-- /.panel-heading -->
           <div class="panel-body">
-            <p>Document scané </p>
-            <img src="../images/bg-01.jpg" class="img-thumbnail">
+        
             <?php
               $req=("SELECT * FROM permis WHERE id_pro_cond_fk='".$_SESSION['id_cond']."' ORDER BY date_enreg_permis DESC ");
               $res=mysqli_query($conn,$req) or die(mysqli_error());
@@ -147,6 +150,7 @@ $_SESSION['id_cond']=htmlentities ($_GET['id_cond']);
                   echo $alerte='<strong>'.'<p class="blue" >'."Le permis a expiré il y a ".$rest_jours.'</p>'.'<strong>';
                 }
                 ?>
+                <hr>
             <?php }?>
           </div>
         </div>

@@ -41,11 +41,11 @@ $res=mysqli_query($conn,$req) or die(mysqli_error());
                               
                                             <td><a href="?p=apercu_proprietaire&&id_pro=<?php echo ($aff['id_pro']) ?>"><?php echo ($aff['id_pro'])?></a></td>
 
-                                             <td width="10"><a href="?p=apercu_proprietaire&&id_mt=<?php echo ($aff['id_pro']) ?>"><img height="40" width="40" class="rounded-circle" src=" ../imgs/<?php echo ($aff['photo_pro']) ?>"/></a></td>
+                                             <td width="10"><a href="?p=apercu_proprietaire&&id_pro=<?php echo ($aff['id_pro']) ?>"><img height="40" width="40" class="rounded-circle" src=" ../imgs/<?php echo ($aff['photo_pro']) ?>"/></a></td>
                                             
                                             <td><a href="?p=apercu_proprietaire&&id_pro=<?php echo ($aff['id_pro']) ?>"><?php echo ($aff['nom_pro'])?></a></td>
 
-                                            <td><a href="?p=apercu_proprietaire&&id_mt=<?php echo ($aff['id_pro']) ?>"><?php echo ($aff['prenom_pro'])?></a></td>
+                                            <td><a href="?p=apercu_proprietaire&&id_pro=<?php echo ($aff['id_pro']) ?>"><?php echo ($aff['prenom_pro'])?></a></td>
                                             
                                            
                             </tr>

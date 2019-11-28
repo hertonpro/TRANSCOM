@@ -60,6 +60,9 @@ mysqli_query($conn,$req1)  or die(mysqli_error()) ;
 <body>
 
    <h3>SAISIE PERMIS PROPRIETAIRE</h3>
+   <?php 
+    include ('menu_pro.php');
+    ?>
  <a href="deconnexion.php">Deconnexion</a><br>
 
 <form method="POST" action="" enctype="multipart/form-data" accept-charset="utf-8">

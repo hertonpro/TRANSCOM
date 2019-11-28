@@ -5,8 +5,7 @@ include('connexion.php');
 ?>
 
 <?php
-include('menu_cond.php');
-
+include('menu_pro.php');
 ?>
 <form  method="GET" action="chercher_proprietaire.php">
          <input id="search-input" name="recherche_nom_pro" value="" placeholder="chercher Proprietaire"  type="text" >

@@ -2,13 +2,12 @@
 //session_start();	
 include('connexion.php');
 echo $_SESSION['nom_ut'].'<br>';
-echo $_SESSION['id_mt'].'<br>';
+//echo $_SESSION['id_mt'].'<br>';
 echo $_SESSION['id_pro'];
 ?>
 
 <?php
 include('menu_pro.php');
-
 ?>
 
 

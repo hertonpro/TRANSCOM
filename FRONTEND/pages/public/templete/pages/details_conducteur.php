@@ -6,7 +6,6 @@ include('connexion.php');
 
 <?php
 include('menu_cond.php');
-
 ?>
 <form  method="GET" action="chercher_conducteur.php">
          <input id="search-input" name="recherche_nom_cond" value="" placeholder="chercher Proprietaire"  type="text" >
