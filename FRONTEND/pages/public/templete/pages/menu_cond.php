@@ -1,0 +1,2 @@
+<a href="?p=dashboard_operateur"><button class="btn btn-outline btn-primary">TABLEAU DE BORD</button></a>
+<a href="?p=saisie_permis_cond&&id_cond=<?php echo $id_cond ?>"><button class="btn btn-outline btn-primary">Permis</button></a>

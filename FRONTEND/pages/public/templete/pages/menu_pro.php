@@ -1,0 +1,2 @@
+<a href="?p=dashboard_operateur"><button class="btn btn-outline btn-primary">TABLEAU DE BORD</button></a>
+<a href="?p=saisie_permis_pro&&id_pro=<?php echo $_SESSION['id_pro']?>"><button class="btn btn-outline btn-primary">Permis</button></a>
